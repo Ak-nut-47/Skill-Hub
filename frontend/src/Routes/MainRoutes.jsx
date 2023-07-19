@@ -2,6 +2,9 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Signin } from "../Pages/Signin";
 import { Signup } from "../Pages/Signup";
+import Cart from "../Pages/Cart";
+import MyLearningPage from "../Pages/myLearning/MyLearninigPage";
+import SingleVideoPage from "../Pages/singleVideo/SingleVideoPage";
 
 
 export const MainRoutes = () => {
@@ -22,10 +25,22 @@ export const MainRoutes = () => {
       path: "*",
       element: <h1>404 Page Not Found</h1>,
     },
+    {
+      path: "/cart",
+      element: <Cart />,
+    },
+    {
+      path: "/mylearning",
+      element: <MyLearningPage />,
+    },
+    {
+      path: "/singlevideo",
+      element: <SingleVideoPage />,
+    }
   ];
 
   const AdminPath = [
-    
+
   ];
 
   return (
@@ -37,7 +52,7 @@ export const MainRoutes = () => {
           element={
             <>
               {/* <Navbar /> {ele.element} <Footer /> */}
-              {ele.element} 
+              {ele.element}
             </>
           }
         />
