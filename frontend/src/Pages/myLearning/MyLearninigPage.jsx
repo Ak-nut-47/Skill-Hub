@@ -6,6 +6,7 @@ import {
 import { Link } from 'react-router-dom';
 import MylearningCard from '../../Components/MylearningCard';
 import { BsStopwatch } from 'react-icons/bs';
+import { color } from 'framer-motion';
 
 const MyLearningPage = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +16,7 @@ const MyLearningPage = () => {
     const fetchData = async () => {
         try {
             setIsLoading(true);
-            const res = await fetch('https://jsonplaceholder.typicode.com/users', {
+            const res = await fetch('http://localhost:8080/courses', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -23,6 +24,7 @@ const MyLearningPage = () => {
                 },
             });
             const data = await res.json();
+            console.log(data)
             setLearningData(data);
             setIsLoading(false);
         } catch (error) {
@@ -76,30 +78,40 @@ const MyLearningPage = () => {
                     //     size='xl'
                     // />
                     <h1>Loading...</h1>
-                ) : (
+                ) : learningData?.length > 0 ? (
                     // Mapping through learnningData array and rendering MylearningCard component
                     <div className='card'>
                         {
-                        learningData?.map((ele, ind) => (
-                            <MylearningCard key={ind} data={ele} />
-                        ))
+                            learningData?.map((ele, ind) => (
+                                <MylearningCard key={ind} data={ele} />
+                            ))
                         }
                     </div>
-                )}
+                ) : (
+                    <Box w={"60%"} m={'auto'} border={"1px solid black"} p={"10px"} margin={'auto'}>
+                        <Flex>
+                            <BsStopwatch />
+                            <Text as='b' borderRight={'1px solid black'}>Schedule learning time</Text>
+                            <Text>Learning a little each day adds up. Research shows that students who make learning a habit are more likely to reach their goals. Set time aside to learn and get reminders using your learning scheduler.
+                            </Text>
+                        </Flex>
+                        <Button h={'30px'} mr={'10'} variant={'ghost'} border={'none'} bg={'black'} color='white' _hover={{
+                            background: "purple",
+                            color: "white",
+                        }}>Get started</Button>
+                        <Button border={'none'} bg={'white'}>Dismiss</Button>
+                    </Box>
+                )
+
+                }
             </Box>
 
-            <Box w={"60%"} m={'auto'}>
-                <Flex>
-                    <BsStopwatch />
-                    <Text as='b'>Schedule learning time</Text>
-                    <Text>Learning a little each day adds up. Research shows that students who make learning a habit are more likely to reach their goals. Set time aside to learn and get reminders using your learning scheduler.
-                    </Text>
-                </Flex>
-                <Button h={'30px'} mr={'10'} variant={'ghost'} border={'none'} bg={'black'} color='white'>Get started</Button>
-                <Button border={'none'} bg={'white'}>Dismiss</Button>
-            </Box>
+
         </Box>
     );
 };
 
 export default MyLearningPage;
+
+
+

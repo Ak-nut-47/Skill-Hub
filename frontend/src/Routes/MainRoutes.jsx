@@ -34,7 +34,7 @@ export const MainRoutes = () => {
       element: <MyLearningPage />,
     },
     {
-      path: "/singlevideo",
+      path: "/singlevideo/:id",
       element: <SingleVideoPage />,
     }
   ];

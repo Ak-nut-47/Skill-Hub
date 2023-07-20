@@ -3,28 +3,29 @@ import { Box, Image, Badge, Grid, useBreakpointValue } from "@chakra-ui/react"
 import { StarIcon } from "@chakra-ui/icons"
 import { Link } from "react-router-dom"
 
-const MylearningCard = (data) => {
-    // const { _id, title, image, author, ratingtotal_ratings, description, price, category, duration } = data
+const MylearningCard = ({ data }) => {
+    const { id, title, image, author, total_ratings, rating, description, price, category, duration } = data
 
-    // const { imageUrl, imageAlt, beds, baths, title, formattedPrice, reviewCount, rating } = data;
+    // const {id, imageUrl, imageAlt, beds, baths, title, formattedPrice, reviewCount, rating } = data;
 
-    const property = {
-        imageUrl: 'https://www.pylenin.com/content/images/2021/08/Bootcamp-1.png',
-        imageAlt: 'Rear view of modern home with pool',
-        beds: 3,
-        baths: 2,
-        title: 'web development...',
-        formattedPrice: '$1,900.00',
-        reviewCount: 34,
-        rating: 3,
-    }
+    // const property = {
+    //     id:1,
+    //     imageUrl: 'https://www.pylenin.com/content/images/2021/08/Bootcamp-1.png',
+    //     imageAlt: 'Rear view of modern home with pool',
+    //     beds: 3,
+    //     baths: 2,
+    //     title: 'web development...',
+    //     formattedPrice: '$1,900.00',
+    //     reviewCount: 34,
+    //     rating: 4,
+    // }
 
 
     return (
         <Box>
-            <Link to="/" style={{textDecoration:'none'}}>
-                <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' w={'300px'} h={'300px'} textAlign={'left'} border={'1px solid gray'} p={'5'} borderRadius={'10px'}>
-                    <Image src={property.imageUrl} alt={property.imageAlt} w={'100%'} />
+            <Link to={`/singlevideo/${id}`} style={{ textDecoration: 'none' }}>
+                <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' w={'300px'} h={'300px'} textAlign={'left'} border={'1px solid gray'} p={'5'} borderRadius={'15px'}>
+                    <Image src={image} alt="" w={'100%'} />
 
                     <Box p='6'>
                         <Box display='flex' alignItems='baseline'>
@@ -49,11 +50,11 @@ const MylearningCard = (data) => {
                             lineHeight='tight'
                             noOfLines={1}
                         >
-                            {property.title}
+                            {title}
                         </Box>
 
                         <Box>
-                            {property.formattedPrice}
+                            {price}
                             <Box as='span' color='gray.600' fontSize='sm'>
                                 / wk
                             </Box>
@@ -65,11 +66,11 @@ const MylearningCard = (data) => {
                                 .map((_, i) => (
                                     <StarIcon
                                         key={i}
-                                        color={i < property.rating ? 'teal.500' : 'gray.300'}
+                                        color={i < rating ? 'teal.500' : 'gray.300'}
                                     />
                                 ))}
                             <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-                                {property.reviewCount} reviews
+                                {total_ratings} reviews
                             </Box>
                         </Box>
                     </Box>
