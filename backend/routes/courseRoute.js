@@ -14,32 +14,60 @@ courseRouter.post("/add",async(req,res)=>{
 
 courseRouter.get("/",async(req,res)=>{
     try{
-    const course= await CourseModel.find()
-    res.send(course)
+        const {q,rating,minRating,maxRating,category,pageNo,perPage,sortBy,field}=req.query
+        const query={}
+        if(q){
+            query.title={$regex: q, $options:"i"}
+        }
+        if(category){
+            query.category={$regex:category,$options:"i"}
+        }
+        if(minRating && maxRating){
+          query.$and=[
+            {rating:{$gte:minRating}},
+            {rating:{$lte:maxRating}}
+          ]  
+        }
+        if(rating){
+            query.rating=rating
+        }
+        let sortOrder;
+        let field1=field
+       
+        if(sortBy==="asc"){sortOrder=1}
+        else if(sortBy==="desc"){sortOrder=-1}
+        const toSkip=pageNo*perPage-perPage
+       
+    const course= await CourseModel.find(query).sort({[field1]:sortOrder}).skip(toSkip).limit(perPage)
+    res.send({total:course.length,course})
    }
    catch(err){
     res.send(err)
    } 
 })
 
-courseRouter.patch("update/:courseId",async(req,res)=>{
+courseRouter.patch("/update/:courseId",async(req,res)=>{
+    
     try{
     // const course=await CourseModel.findById(req.params.courseId)
     const updateCourse=await CourseModel.findByIdAndUpdate(req.params.courseId,req.body,{new:true})
-    // console.log(course)
+    // // console.log(course)
     res.send(updateCourse)
+   
     }catch(err){
         res.send({err:"err"})
     }
 })
 
 
-courseRouter.get("delete/:courseId",async(req,res)=>{
+courseRouter.delete("/delete/:courseId",async(req,res)=>{
+    
     try{
-    const course=await CourseModel.findById(req.params.courseId)
-    // await CourseModel.findByIdAndDelete(req.params.courseId,req.body,{new:true})
-    console.log(course)
-    // res.send("course deleted")
+    // const course=await CourseModel.findById(req.params.courseId)
+    await CourseModel.findByIdAndDelete(req.params.courseId)
+    // console.log(course)
+    res.send("course deleted")
+
     }catch(err){
         res.send({err:"err"})
     }
