@@ -23,14 +23,25 @@ export const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const submitLogin = () => {
     const payload = {
       email,
       password,
     };
+    //.post(`${process.env.REACT_APP_SERVER}/users/login`, payload)
 
+    axios
+      .post("http://localhost:8080/users/login", payload)
+      .then((res) => {
+        alert(res.data.msg);
+        localStorage.setItem("frontendtoken", res.data.token);
+        if(res.data.msg==="Login Successful"){
+          navigate("/");
+        }
+      })
+      .catch((err) => console.log(err));
 
     setEmail("");
     setPassword("");
@@ -82,9 +93,12 @@ export const Signin = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <InputRightElement h={"full"}>
-                  <Button variant={"ghost"} onClick={() =>
-                        setShowPassword((showPassword) => !showPassword)
-                      }>
+                  <Button
+                    variant={"ghost"}
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }
+                  >
                     {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                   </Button>
                 </InputRightElement>

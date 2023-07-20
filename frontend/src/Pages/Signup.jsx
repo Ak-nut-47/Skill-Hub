@@ -37,14 +37,23 @@ export const Signup = () => {
       password,
     };
 
-
+    axios
+      .post("http://localhost:8080/users/register", payload)
+      .then((res) => {
+        alert(res.data.msg);
+        if (res.data.msg === "Registration Successful") {
+          navigate("/signin");
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
     setName("");
     setEmail("");
     setPhone("");
-    setGender("")
+    setGender("");
     setPassword("");
   };
-
 
   return (
     <Flex
@@ -129,9 +138,12 @@ export const Signup = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <InputRightElement h={"full"}>
-                  <Button variant={"ghost"} onClick={() =>
-                    setShowPassword((showPassword) => !showPassword)
-                  }>
+                  <Button
+                    variant={"ghost"}
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }
+                  >
                     {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                   </Button>
                 </InputRightElement>
