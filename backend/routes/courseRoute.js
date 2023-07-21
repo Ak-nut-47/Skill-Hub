@@ -1,8 +1,9 @@
 const express=require("express")
 const courseRouter=express.Router()
 const CourseModel=require("../model/courseModel")
+const middleware=require("../middleware/adminmiddleware")
 
-courseRouter.post("/add",async(req,res)=>{
+courseRouter.post("/add",middleware,async(req,res)=>{
     try{
     const course=await CourseModel.create(req.body) 
     res.send({"msg":"Course created",course})
@@ -12,8 +13,10 @@ courseRouter.post("/add",async(req,res)=>{
     }
 })
 
-courseRouter.get("/",async(req,res)=>{
+courseRouter.get("/",middleware,async(req,res)=>{
     try{
+        const {videos}=req.body
+        const projection={videos:0}
         const {q,rating,minRating,maxRating,category,pageNo,perPage,sortBy,field}=req.query
         const query={}
         if(q){
@@ -36,9 +39,11 @@ courseRouter.get("/",async(req,res)=>{
        
         if(sortBy==="asc"){sortOrder=1}
         else if(sortBy==="desc"){sortOrder=-1}
-        const toSkip=pageNo*perPage-perPage
+        
+        // const toSkip=pageNo*(perPage-1)
        
-    const course= await CourseModel.find(query).sort({[field1]:sortOrder}).skip(toSkip).limit(perPage)
+       
+    const course= await CourseModel.find(query,projection).sort({[field1]:sortOrder}).skip(pageNo > 0 ? ( ( pageNo - 1 ) * perPage ) : 0).limit(perPage)
     res.send({total:course.length,course})
    }
    catch(err){
@@ -46,7 +51,7 @@ courseRouter.get("/",async(req,res)=>{
    } 
 })
 
-courseRouter.patch("/update/:courseId",async(req,res)=>{
+courseRouter.patch("/update/:courseId",middleware,async(req,res)=>{
     
     try{
     // const course=await CourseModel.findById(req.params.courseId)
@@ -60,7 +65,7 @@ courseRouter.patch("/update/:courseId",async(req,res)=>{
 })
 
 
-courseRouter.delete("/delete/:courseId",async(req,res)=>{
+courseRouter.delete("/delete/:courseId",middleware,async(req,res)=>{
     
     try{
     // const course=await CourseModel.findById(req.params.courseId)
