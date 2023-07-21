@@ -13,6 +13,7 @@ import {
   Select,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -26,7 +27,53 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const toast = useToast();
   const navigate = useNavigate();
+
+  const signupSuccess = (msg) => {
+    toast({
+      title: msg,
+      description: "Thank You!!Login Now",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+      position: "top",
+    });
+  };
+
+  const emailExist = (msg) => {
+    toast({
+      title: msg,
+      description: "Please Enter New Email or Login!!",
+      status: "info",
+      duration: 9000,
+      isClosable: true,
+      position: "top",
+    });
+  };
+
+  const fillAllCredential = (msg) => {
+    toast({
+      title: msg,
+      description: "Please Share Required Info!!",
+      status: "error",
+      duration: 9000,
+      isClosable: true,
+      position: "top-right",
+    });
+  };
+
+  const RequiredPass = (msg) => {
+    toast({
+      title: msg,
+      description:
+        "Password Format Should Contain Atleast One UpperCase Character,Number,Special Character and Length Greater Than 8",
+      status: "warning",
+      duration: 9000,
+      isClosable: true,
+      position: "top",
+    });
+  };
 
   const handleSubmit = () => {
     const payload = {
@@ -40,9 +87,19 @@ export const Signup = () => {
     axios
       .post("http://localhost:8080/users/register", payload)
       .then((res) => {
-        alert(res.data.msg);
+        //alert(res.data.msg);
         if (res.data.msg === "Registration Successful") {
+          signupSuccess(res.data.msg);
           navigate("/signin");
+        }
+        if (res.data.msg === "Invalid Password Format!!") {
+          RequiredPass(res.data.msg);
+        }
+        if (res.data.msg === "Please Fill All The Required Credentials") {
+          fillAllCredential(res.data.msg);
+        }
+        if (res.data.msg === "User Already Exists!") {
+          emailExist(res.data.msg);
         }
       })
       .catch((err) => {
