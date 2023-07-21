@@ -1,5 +1,6 @@
 .video-description-container {
-    width: 72%;
+    width: 100%;
+    /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
 }
 
 h2 {
@@ -7,14 +8,14 @@ h2 {
 }
 
 .video-container {
-    width: 80%;
-    margin: 10px 10px 10px 0px;
+    width: 100%;
+    /* margin: 0px 10px 10px 0px; */
 }
 
 .container1 {
     padding: 20px;
     border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    /* border-right: 1px solid black; */
 }
 
 .container2 {
@@ -23,10 +24,10 @@ h2 {
     padding: 20px;
     border-bottom: 1px solid black;
     text-align: left;
-    border-right: 1px solid black;
+    /* border-right: 1px solid black; */
 }
 
-.container2 > div{
+.container2>div {
     width: 50%;
 }
 
@@ -35,10 +36,10 @@ h2 {
     justify-content: space-evenly;
     padding: 20px;
     border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    /* border-right: 1px solid black; */
 }
 
-.container3 > div{
+.container3>div {
     width: 50%;
     text-align: left;
 }
@@ -48,10 +49,10 @@ h2 {
     justify-content: space-evenly;
     padding: 20px;
     border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    /* border-right: 1px solid black; */
 }
 
-.container4 > div{
+.container4>div {
     width: 50%;
     text-align: left;
 }
@@ -61,10 +62,96 @@ h2 {
     /* justify-content: space-evenly; */
     padding: 20px;
     border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    /* border-right: 1px solid black; */
 }
 
-.container5 > div{
+.container5>div {
     width: 50%;
     text-align: left;
+}
+
+.main-video-container {
+    width: 100%;
+    display: flex;
+    text-align: left;
+    /* border: 1px solid red; */
+}
+
+.left-side{
+    border: 1px solid red;
+}
+
+.right-side {
+    text-align: left;
+    width: 50%;
+    border-top: 1px solid black;
+}
+
+.right-side h2 {
+    margin-bottom: 20px;
+    color: purple;
+}
+
+.video-nav {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid purple;
+    border-bottom: 1px solid purple;
+}
+
+.video-nav>button :hover {
+    color: purple;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .main-video-container {
+        width: 100%;
+        display: flex;
+        text-align: left;
+        flex-direction: column;
+        /* border: 1px solid red; */
+    }
+
+    .right-side {
+        text-align: left;
+        /* padding: 5px; */
+        width: 100%;
+        border-top: 1px solid black;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .main-video-container {
+        width: 98%;
+        display: flex;
+        text-align: left;
+        flex-direction: column;
+        /* border: 1px solid red; */
+    }
+
+    .right-side {
+        text-align: left;
+        /* padding: 5px; */
+        width: 100%;
+        border-top: 1px solid black;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .main-video-container {
+        width: 98%;
+        display: flex;
+        text-align: left;
+        flex-direction: row;
+        /* border: 1px solid red; */
+    }
+
+    .right-side {
+        text-align: left;
+        /* padding: 5px; */
+        width: 40%;
+        border-top: 1px solid black;
+    }
 }
