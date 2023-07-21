@@ -5,15 +5,16 @@ import { Signup } from "../Pages/Signup";
 import Cart from "../Pages/Cart";
 import MyLearningPage from "../Pages/myLearning/MyLearninigPage";
 import SingleVideoPage from "../Pages/singleVideo/SingleVideoPage";
+import LandingPage from "../Pages/LandingPage";
+import PageNotFound from "../Pages/PageNotFound";
 import { SingleDetailPage } from "../Pages/SingleDetailPage";
-
 
 export const MainRoutes = () => {
   const PageRoutes = [
-    // {
-    //   path: "/",
-    //   element: <HomePage />,
-    // },
+    {
+      path: "/",
+      element: <LandingPage />,
+    },
     {
       path: "/signin",
       element: <Signin />,
@@ -24,7 +25,7 @@ export const MainRoutes = () => {
     },
     {
       path: "*",
-      element: <h1>404 Page Not Found</h1>,
+      element: <PageNotFound />,
     },
     {
       path: "/cart",
@@ -42,11 +43,10 @@ export const MainRoutes = () => {
       path: "/detail/:id",
       element: <SingleDetailPage />,
     }
-  ];
-
-  const AdminPath = [
 
   ];
+
+  const AdminPath = [];
 
   return (
     <Routes>
