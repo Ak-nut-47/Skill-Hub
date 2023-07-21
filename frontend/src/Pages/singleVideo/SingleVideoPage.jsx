@@ -1,100 +1,132 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import "./SingleVideoPage.css"
+import './SingleVideoPage.css';
+import CourseContentCard from '../../Components/CourseContentCard';
 
 const SingleVideoPage = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
+  const [currentVideoUrl, setCurrentVideoUrl] = useState('');
 
-  const { id } = useParams()
-  console.log(id)
 
-  const fetchData = async () => {
-    try {
-      setIsLoading(true);
-      const res = await fetch(`http://localhost:8080/courses/${id}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          // authorization: `Bearer ${localStorage.getItem('token')}`
-        },
-      });
-      const data = await res.json();
-      console.log(data)
-      setData(data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsError(true);
-      setIsLoading(false);
-    }
-  };
+  const { id } = useParams();
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const res = await fetch(`https://64ba6f8d5e0670a501d628f4.mockapi.io/skillhub/${id}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            // authorization: `Bearer ${localStorage.getItem('token')}`
+          },
+        });
+        if (!res.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await res.json();
+        console.log(data);
+        setCurrentVideoUrl((data?.videos[0]))
+        setData(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsError(true);
+        setIsLoading(false);
+      }
+    };
+
     fetchData();
-  }, []);
+  }, [id]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error occurred while fetching data.</div>;
+  }
+
+  if (!data) {
+    return null;
+  }
+
+  const videoUrl = (data?.videos[0]) || '';
+
   return (
-    <div>
-      <div className='video-container'>
-        <h1>Video Player</h1>
-        <ReactPlayer
-          url="https://youtu.be/bPrmA1SEN2k" // Replace with the URL to your video file
-          controls={true}
-          width="90%"
-          height={'400px'}
-        />
+    <div className='main-video-container'>
+      <div className='left-side'>
+        <div className='video-container'>
+          <ReactPlayer
+            url={currentVideoUrl}
+            controls={true}
+            width='100%'
+            height={'500px'}
+          />
+        </div>
+        <div className='video-description-container'>
+          <div className='video-nav'>
+            <button><b>Overview</b></button>
+            <button><b>Q & A</b></button>
+          </div>
+          <div className='container1'>
+            <h2>
+              <b>About this course</b>
+            </h2>
+            <p>{data.description}</p>
+          </div>
+          <div className='container2'>
+            <div>
+              <p>By the numbers</p>
+            </div>
+            <div>
+              <p>Skill Level: All Levels</p>
+              <p>Students: {data?.total_ratings}</p>
+              <p>Languages: English</p>
+              <p>Captions: Yes</p>
+              <p>Duration: {data?.duration}</p>
+            </div>
+          </div>
+          <div className='container3'>
+            <div>Certificates</div>
+            <div>
+              <p>Get Skill Hub certificate by completing the entire course</p>
+              <br />
+              <button>Udemy Certificate</button>
+            </div>
+          </div>
+          <div className='container4'>
+            <div>Features</div>
+            <div>
+              <p>Available on iOS and Android</p>
+              <br />
+              <p>Coding exercises</p>
+            </div>
+          </div>
+          <div className='container5'>
+            <div>Description</div>
+            <div>
+              <p>{data?.description}</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className='video-description-container'>
-        <div className='container1'>
-          <h2><b>About this course</b></h2>
-          <p>{data.description}</p>
-        </div>
-        <div className='container2'>
-          <div>
-            <p>By the numbers</p>
-          </div>
-          <div>
-            <p>Skill Level : All Levels</p>
-            <p>Students : {data?.total_ratings}</p>
-            <p>Languages : English</p>
-            <p>Captions : Yes</p>
-            <p>Duration : {data?.duration}</p>
-          </div>
-        </div>
-        <div className='container3'>
-          <div>
-            Certificates
-          </div>
-          <div>
-            <p>Get Skill Hub certificate by completing entire course</p>
-            <br />
-            <button>Udemy Certificate</button>
-          </div>
-        </div>
-        <div className='container4'>
-          <div>
-            Features
-          </div>
-          <div>
-            <p>Available on IOS and Android</p>
-            <br />
-            <p>Coding exercises</p>
-          </div>
-        </div>
-        <div className='container5'>
-          <div>
-            Description
-          </div>
-          <div>
-            <p>{data?.description}</p>
-          </div>
+
+      <div className='right-side'>
+        <h2><b>Course content</b></h2>
+        <div>
+          {
+            data?.videos?.map((ele, ind) => (
+              <CourseContentCard key={ele.id} title={data?.title} ind={ind} setCurrentVideoUrl={setCurrentVideoUrl} videoUrl={ele}/>
+            ))
+          }
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SingleVideoPage
+export default SingleVideoPage;
