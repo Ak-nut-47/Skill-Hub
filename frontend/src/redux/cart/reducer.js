@@ -1,10 +1,14 @@
-import { CART_FAILURE, CART_REQUEST, GET_CART_SUCCESS } from "./actionTypes";
+import {
+  CART_FAILURE,
+  CART_REQUEST,
+  DELETE_CART,
+  GET_CART_SUCCESS,
+} from "./actionTypes";
 
 const initialState = {
   cart: [],
   isLoading: false,
   isError: false,
-  // totalCourse: 0,
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
@@ -26,9 +30,9 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         isLoading: false,
         cart: payload,
-        // totalCourse: totalCourse,
       };
-
+    case DELETE_CART:
+      return { ...state, isLoading: false };
     default:
       return state;
   }
