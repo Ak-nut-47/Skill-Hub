@@ -5,6 +5,7 @@ import { Signup } from "../Pages/Signup";
 import Cart from "../Pages/Cart";
 import MyLearningPage from "../Pages/myLearning/MyLearninigPage";
 import SingleVideoPage from "../Pages/singleVideo/SingleVideoPage";
+import { SingleDetailPage } from "../Pages/SingleDetailPage";
 
 
 export const MainRoutes = () => {
@@ -36,6 +37,10 @@ export const MainRoutes = () => {
     {
       path: "/singlevideo/:id",
       element: <SingleVideoPage />,
+    },
+    {
+      path: "/detail/:id",
+      element: <SingleDetailPage />,
     }
   ];
 
@@ -62,19 +67,6 @@ export const MainRoutes = () => {
         <Route key={key} path={ele.path} element={<>{ele.element}</>} />
       ))}
 
-      {/* <Route path="/" element={<Home />} />
-      <Route path="/signin" element={<Signin />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/buyproduct" element={<Buyproduct />} />
-      <Route path="/buyproduct/:id" element={<SingleProduct />} />
-      <Route path="/calculator" element={<Calculator />} />
-      <Route path="/payment" element={<Payment />} />
-
-      <Route path="/adminsignin" element={<AdminSignin />} />
-      <Route path="/adminsignup" element={<AdminSignup />} />
-      <Route path="/adminProperty" element={<Property />} />
-      <Route path="/addProperty" element={<AddProperty />} />
-      <Route path="/editProperty/:id" element={<EditProperty />} /> */}
     </Routes>
   );
 };
