@@ -14,6 +14,7 @@ import {
   useColorModeValue,
   InputRightElement,
   InputGroup,
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
@@ -23,7 +24,53 @@ export const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
+  const toast = useToast();
+
+  const signinSuccess = (msg) => {
+    toast({
+      title: msg,
+      description: "Thank You!!",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+      position: "top",
+    });
+  };
+
+  const wrongEmail = (msg) => {
+    toast({
+      title: msg,
+      description: "Please Enter Correct Email!!",
+      status: "warning",
+      duration: 9000,
+      isClosable: true,
+      position: "top-right",
+    });
+  };
+
+  const fillAllCredential = (msg) => {
+    toast({
+      title: msg,
+      description: "Please Share Required Info!!",
+      status: "info",
+      duration: 9000,
+      isClosable: true,
+      position: "top",
+    });
+  };
+
+  const wrongCredential = (msg) => {
+    toast({
+      title: msg,
+      description: "Please Enter Correct Password!!",
+      status: "warning",
+      duration: 9000,
+      isClosable: true,
+      position: "top-right",
+    });
+  };
 
   const submitLogin = () => {
     const payload = {
@@ -35,10 +82,20 @@ export const Signin = () => {
     axios
       .post("http://localhost:8080/users/login", payload)
       .then((res) => {
-        alert(res.data.msg);
+        //alert(res.data.msg);
         localStorage.setItem("frontendtoken", res.data.token);
-        if(res.data.msg==="Login Successful"){
+        if (res.data.msg === "Login Successful") {
+          signinSuccess(res.data.msg);
           navigate("/");
+        }
+        if (res.data.msg === "Please Fill All The Required Credentials") {
+          fillAllCredential(res.data.msg);
+        }
+        if (res.data.msg === "Password Not Match!!") {
+          wrongCredential(res.data.msg);
+        }
+        if (res.data.msg === "User Not Found!") {
+          wrongEmail(res.data.msg);
         }
       })
       .catch((err) => console.log(err));
