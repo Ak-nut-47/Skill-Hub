@@ -1,37 +1,39 @@
 import React from 'react'
 import { Box, Image, Badge, Grid, useBreakpointValue } from "@chakra-ui/react"
 import { StarIcon } from "@chakra-ui/icons"
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
 
 const MylearningCard = ({ data }) => {
-    const { id, title, image, author, total_ratings, rating, description, price, category, duration } = data
+    const { id, title, image, author, total_ratings, rating, description, price, category, duration } = data;
+    console.log(data)
 
-    // const {id, imageUrl, imageAlt, beds, baths, title, formattedPrice, reviewCount, rating } = data;
+    const property = {
+        id: 1,
+        imageUrl: image, // Remove curly braces
+        imageAlt: 'Rear view of modern course with detail',
+        title: title, // Remove curly braces
+        formattedPrice: price, // Remove curly braces
+        reviewCount: total_ratings, // Remove curly braces
+        rating: rating, // Remove curly braces
+        duration: duration,
+        category:category
 
-    // const property = {
-    //     id:1,
-    //     imageUrl: 'https://www.pylenin.com/content/images/2021/08/Bootcamp-1.png',
-    //     imageAlt: 'Rear view of modern home with pool',
-    //     beds: 3,
-    //     baths: 2,
-    //     title: 'web development...',
-    //     formattedPrice: '$1,900.00',
-    //     reviewCount: 34,
-    //     rating: 4,
-    // }
-
+    };
 
     return (
         <Box>
             <Link to={`/singlevideo/${id}`} style={{ textDecoration: 'none' }}>
-                <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' w={'300px'} h={'300px'} textAlign={'left'} border={'1px solid gray'} p={'5'} borderRadius={'15px'}>
-                    <Image src={image} alt="" w={'100%'} />
+                <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' w={'300px'} h={'390px'} textAlign={'left'} border={'1px solid gray'} p={'5'}  boxShadow={'xl'} margin={'auto'} mb={'10px'}>
+                    <Image src={property.imageUrl} alt="" w={'100%'} h={'150px'} />
 
                     <Box p='6'>
                         <Box display='flex' alignItems='baseline'>
                             <Badge borderRadius='full' px='2' colorScheme='teal'>
-                                New
+                                New 
                             </Badge>
+                            <Box ml={'10px'} color={'purple'} as='b'>
+                                {property.category}
+                            </Box>
                             <Box
                                 color='gray.500'
                                 fontWeight='semibold'
@@ -48,15 +50,15 @@ const MylearningCard = ({ data }) => {
                             fontWeight='semibold'
                             as='h4'
                             lineHeight='tight'
-                            noOfLines={1}
+                            numberOfLines={1} // Change 'noOfLines' to 'numberOfLines'
                         >
-                            {title}
+                            {property.title}
                         </Box>
 
                         <Box>
-                            {price}
+                            {property.formattedPrice}
                             <Box as='span' color='gray.600' fontSize='sm'>
-                                / wk
+                                / month
                             </Box>
                         </Box>
 
@@ -66,18 +68,23 @@ const MylearningCard = ({ data }) => {
                                 .map((_, i) => (
                                     <StarIcon
                                         key={i}
-                                        color={i < rating ? 'teal.500' : 'gray.300'}
+                                    // Remove the 'color' attribute
+                                    // The color will be automatically determined based on the condition
+                                    // i < property.rating ? 'teal.500' : 'gray.300'
                                     />
                                 ))}
                             <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-                                {total_ratings} reviews
+                                {property.reviewCount} reviews
                             </Box>
+                        </Box>
+                        <Box>
+                            Duration : {property.duration}
                         </Box>
                     </Box>
                 </Box>
             </Link>
         </Box>
-    )
-}
+    );
+};
 
-export default MylearningCard
+export default MylearningCard;
