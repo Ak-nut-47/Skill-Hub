@@ -18,7 +18,7 @@ const LandingPage = () => {
       <LandingPageCarousel />
       <Section5 />
       <Section6 />
-      <Footer />
+      {/* <Footer /> */}
     </Flex>
   );
 };

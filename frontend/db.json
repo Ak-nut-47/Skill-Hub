@@ -1,0 +1,554 @@
+[
+    {
+        "title": "The Complete Python Bootcamp, From Zero to Hero",
+        "image": "https://www.pylenin.com/content/images/2021/08/Bootcamp-1.png",
+        "videos": [
+            "https://youtu.be/bPrmA1SEN2k",
+            "https://youtu.be/7S865QCGL74",
+            "https://youtu.be/JSJJ-qOOAXI",
+            "https://youtu.be/GA0u6WM7_Eo",
+            "https://youtu.be/wlS_fWxIPyQ"
+        ],
+        "author": "Krish Naik",
+        "rating": 4.5,
+        "total_ratings": 45990,
+        "description": "You will learn how to leverage the power of Python to solve tasks, You will be able to use Python for your own work problems or personal projects. , Learn to use Python professionally, learning both Python 2 and Python 3!, Learn advanced Python features, like the collections module and how to work with timestamps!",
+        "price": 649,
+        "category": "Python",
+        "duration": "22 Hours"
+    },
+    {
+        "title": "Python for Data Science and Machine Learning",
+        "image": "https://technovids.com/wp-content/uploads/2019/05/Python-Data-Science-Machine-Learning.jpg.webp",
+        "videos": [
+            "https://youtu.be/LHBE6Q9XlzI",
+            "https://youtu.be/JL_grPUnXzY",
+            "https://youtu.be/Vn_mmOuQkSA",
+            "https://youtu.be/6lBPM-MiGNI",
+            "https://youtu.be/Vig1IeU2RYk"
+        ],
+        "author": "John Smith",
+        "rating": 4.7,
+        "total_ratings": 21500,
+        "description": "Master Python for data analysis, data visualization, and machine learning. Learn popular libraries like Pandas, NumPy, Matplotlib, and Scikit-learn. Build predictive models and extract insights from data.",
+        "price": 799,
+        "category": "Python",
+        "duration": "28 Hours"
+    },
+    {
+        "title": "Automating Real-World Tasks with Python",
+        "image": "https://cdn2.hubspot.net/hubfs/1667658/blog/featured/Python%20task%20automation%20featured%20image.jpg",
+        "videos": [
+            "https://youtu.be/aPyIxGQeXo0",
+            "https://youtu.be/NCvI-K0Gp90",
+            "https://youtu.be/4kQlElmmMy0",
+            "https://youtu.be/LXsdt6RMNfY",
+            "https://youtu.be/RYE0QQKJI9o"
+        ],
+        "author": "Jane Williams",
+        "rating": 4.6,
+        "total_ratings": 18000,
+        "description": "Learn how to automate repetitive tasks and increase productivity with Python. Build scripts to handle file operations, web scraping, and interact with APIs. Apply automation techniques to real-world projects.",
+        "price": 699,
+        "category": "Python",
+        "duration": "25 Hours"
+    },
+    {
+        "title": "Python Web Development with Django",
+        "image": "https://www.sparxitsolutions.com/blog/wp-content/uploads/2019/05/python-django-web-development.jpg",
+        "videos": [
+            "https://youtu.be/zuxzE7--RYM",
+            "https://youtu.be/jBzwzrDvZ18",
+            "https://youtu.be/-fP9jdfS0ms",
+            "https://youtu.be/rHux0gMZ3Eg",
+            "https://youtu.be/xSUm6iMtREA"
+        ],
+        "author": "Michael Johnson",
+        "rating": 4.8,
+        "total_ratings": 14700,
+        "description": "Become a full-stack web developer with Python and Django. Learn to build robust web applications with a clean and elegant codebase. Develop a real-world project and deploy it on the web.",
+        "price": 799,
+        "category": "Python",
+        "duration": "30 Hours"
+    },
+    {
+        "title": "Python Game Development: From Basics to Advanced",
+        "image": "https://files.realpython.com/media/Build-an-AI-Game-Engine-for-Tic-Tac-Toe-in-Python_Watermarked.b90cdf84c417.jpg",
+        "videos": [
+            "https://youtu.be/rJ1iA-33fss",
+            "https://youtu.be/FfWpgLFMI7w",
+            "https://youtu.be/Kp63uc2-zYI",
+            "https://youtu.be/lzHLPaU7UUE",
+            "https://youtu.be/McoDjOCb2Zo"
+        ],
+        "author": "David Lee",
+        "rating": 4.4,
+        "total_ratings": 9900,
+        "description": "Learn how to create games using Python and popular game development libraries like Pygame. Start from basic concepts and progress to building advanced game mechanics. Showcase your creativity with exciting projects.",
+        "price": 599,
+        "category": "Python",
+        "duration": "20 Hours"
+    },
+
+
+
+
+    {
+        "title": "The Complete Database Bootcamp, From Zero to Hero",
+        "image": "https://www.onlinecourses24x7.com/wp-content/uploads/2021/03/The-Complete-SQL-Bootcamp-2021-from-Zero-to-Hero-SQL.jpg",
+        "videos": [
+            "https://youtu.be/HXV3zeQKqGY",
+            "https://youtu.be/en6YPAgc6WM",
+            "https://youtu.be/7S_tz1z_5bA",
+            "https://youtu.be/4cWkVbC2bNE",
+            "https://youtu.be/qiQR5rTSshw"
+        ],
+        "author": "Krish Naik",
+        "rating": 4.5,
+        "total_ratings": 45990,
+        "description": "You will learn how to leverage the power of Python to solve tasks, You will be able to use Mongo DB for your own work problems or personal projects. , Learn to use Mongo DB professionally, Learn advanced Mongo DB features, like the collections module and how to work with timestamps!",
+        "price": 649,
+        "category": "Web Development",
+        "duration": "22 Hours"
+    },
+    {
+        "title": "The Complete Web Development Bootcamp",
+        "image": "https://www.codingninjas.com/blog/wp-content/uploads/2021/08/Blog-2-2.png",
+        "videos": [
+            "https://youtu.be/Xm4BObh4MhI",
+            "https://youtu.be/parUag5DSTI",
+            "https://youtu.be/kQ-4bgu2htk",
+            "https://youtu.be/14-xBLhZ4AE",
+            "https://youtu.be/U5R_4btyYiU"
+        ],
+        "author": "Sarah Johnson",
+        "rating": 4.8,
+        "total_ratings": 23800,
+        "description": "Learn front-end and back-end web development with HTML, CSS, JavaScript, Node.js, and Express.js. Build real-world web applications and deploy them to the cloud.",
+        "price": 799,
+        "category": "Web Development",
+        "duration": "30 Hours"
+    },
+    {
+        "title": "JavaScript and React: Modern Front-End Development",
+        "image": "https://img-c.udemycdn.com/course/750x422/4789938_e737_2.jpg",
+        "videos": [
+            "https://youtu.be/Y_r-51IzfGk",
+            "https://youtu.be/m55PTVUrlnA",
+            "https://youtu.be/JR9wsVYp8RQ",
+            "https://youtu.be/Odjswd2DIUY",
+            "https://youtu.be/ACaT1Gfhe6I"
+        ],
+        "author": "John Smith",
+        "rating": 4.6,
+        "total_ratings": 17500,
+        "description": "Master JavaScript and React to build interactive and responsive user interfaces. Learn about state management, Redux, and how to work with APIs to create dynamic web applications.",
+        "price": 749,
+        "category": "Web Development",
+        "duration": "26 Hours"
+    },
+    {
+        "title": "Back-End Web Development with Django and Python",
+        "image": "https://cdn.educba.com/academy/wp-content/uploads/2017/10/Python-and-Django-for-Web-Development.jpg",
+        "videos": [
+            "https://youtu.be/jBzwzrDvZ18",
+            "https://youtu.be/PtQiiknWUcI",
+            "https://youtu.be/Q33KBiDriJY",
+            "https://youtu.be/ZxMB6Njs3ck",
+            "https://youtu.be/kN5vc8EqFWI"
+        ],
+        "author": "Michael Johnson",
+        "rating": 4.7,
+        "total_ratings": 19500,
+        "description": "Learn to build scalable and secure web applications with Django and Python. Implement user authentication, handle database operations, and deploy your web app to production.",
+        "price": 899,
+        "category": "Web Development",
+        "duration": "28 Hours"
+    },
+    {
+        "title": "Full-Stack Web Development with MERN",
+        "image": "https://www.rlogical.com/wp-content/uploads/2020/12/MERN.webp",
+        "videos": [
+            "https://youtu.be/L_eF8az2cSA",
+            "https://youtu.be/fKJVxItLiUw",
+            "https://youtu.be/CvCiNeLnZ00",
+            "https://youtu.be/7CqJlxBYj-M",
+            "https://youtu.be/DLX62G4lc44"
+        ],
+        "author": "Jane Williams",
+        "rating": 4.9,
+        "total_ratings": 14200,
+        "description": "Become a full-stack web developer using the MERN (MongoDB, Express.js, React, and Node.js) stack. Create dynamic and real-time applications with a powerful JavaScript-based tech stack.",
+        "price": 999,
+        "category": "Web Development",
+        "duration": "35 Hours"
+    },
+
+
+    {
+        "title": "Introduction to Machine Learning",
+        "image": "https://miro.medium.com/v2/resize:fit:1358/1*cG6U1qstYDijh9bPL42e-Q.jpeg",
+        "videos": [
+            "https://youtu.be/ukzFI9rgwfU",
+            "https://youtu.be/Y4qO9unerGs",
+            "https://youtu.be/FIpbrnbVfJk",
+            "https://youtu.be/KNAWp2S3w94",
+            "https://youtu.be/Gv9_4yMHFhI"
+        ],
+        "author": "John Smith",
+        "rating": 4.7,
+        "total_ratings": 12000,
+        "description": "Get started with machine learning and explore various algorithms for classification and regression tasks. Learn how to evaluate models and apply them to real-world datasets.",
+        "price": 599,
+        "category": "Machine Learning",
+        "duration": "20 Hours"
+    },
+    {
+        "title": "Deep Learning Fundamentals",
+        "image": "https://www.mouser.in/blog/Portals/11/Dongang_Machine%20Learning_Theme%20Image-min_1.jpg",
+        "videos": [
+            "https://youtu.be/VyWAvY2CF9c",
+            "https://youtu.be/d2kxUVwWWwU",
+            "https://youtu.be/i_LwzRVP7bg",
+            "https://youtu.be/8mAITcNt710",
+            "https://youtu.be/R1oxezUcYZI"
+        ],
+        "author": "Jane Williams",
+        "rating": 4.9,
+        "total_ratings": 16500,
+        "description": "Dive into the world of deep learning and neural networks. Learn about popular frameworks like TensorFlow and Keras. Implement convolutional and recurrent networks for image and sequence data.",
+        "price": 749,
+        "category": "Machine Learning",
+        "duration": "25 Hours"
+    },
+    {
+        "title": "Machine Learning with Python",
+        "image": "https://pyimagesearch.com/wp-content/uploads/2019/01/python_ml_header.png",
+        "videos": [
+            "https://youtu.be/JxgmHe2NyeY",
+            "https://youtu.be/PeMlggyqz0Y",
+            "https://youtu.be/1vsmaEfbnoE",
+            "https://youtu.be/tEn5BjRY8Uw",
+            "https://youtu.be/PXMJ6FS7llk"
+        ],
+        "author": "Michael Johnson",
+        "rating": 4.6,
+        "total_ratings": 19800,
+        "description": "Learn how to apply machine learning algorithms using Python. Work with scikit-learn and pandas for data preprocessing and model building. Develop predictive models and make data-driven decisions.",
+        "price": 799,
+        "category": "Machine Learning",
+        "duration": "28 Hours"
+    },
+    {
+        "title": "Reinforcement Learning: Theory and Practice",
+        "image": "https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/08/Reinforcement-Learning-in-ML-TV.jpg",
+        "videos": [
+            "https://youtu.be/1FZ0A1QCMWc",
+            "https://youtu.be/PIfj8jJuO1s",
+            "https://youtu.be/L_4BPjLBF4E",
+            "https://youtu.be/LzaWrmKL1Z4",
+            "https://youtu.be/L8ypSXwyBds"
+        ],
+        "author": "David Lee",
+        "rating": 4.8,
+        "total_ratings": 14200,
+        "description": "Explore the foundations of reinforcement learning and its applications. Learn about Q-learning, Deep Q Networks (DQNs), and policy gradients. Implement RL algorithms to solve various control problems.",
+        "price": 899,
+        "category": "Machine Learning",
+        "duration": "30 Hours"
+    },
+    {
+        "title": "Natural Language Processing (NLP) in Machine Learning",
+        "image": "https://global-uploads.webflow.com/5ef788f07804fb7d78a4127a/6218c4f26cc27150fc5433ec_Engati-Natural-Language-Processing.jpg",
+        "videos": [
+            "https://youtu.be/bPpwZxasJo0",
+            "https://youtu.be/CMrHM8a3hqw",
+            "https://youtu.be/fLvJ8VdHLA0",
+            "https://youtu.be/05ONoGfmKvA",
+            "https://youtu.be/X2vAabgKiuM"
+        ],
+        "author": "Sarah Johnson",
+        "rating": 4.5,
+        "total_ratings": 17400,
+        "description": "Dive into natural language processing and learn how to process and understand human language using machine learning techniques. Build text classification and sentiment analysis models.",
+        "price": 649,
+        "category": "Machine Learning",
+        "duration": "22 Hours"
+    },
+
+
+    {
+        "title": "AWS Certified Solutions Architect - Associate",
+        "image": "https://k21academy.com/wp-content/uploads/2020/07/AWS_BlogImage.png",
+        "videos": [
+            "https://youtu.be/4JUOS3wvnLg",
+            "https://youtu.be/Ia-UEYYR44s",
+            "https://youtu.be/uRyIK28NsCI",
+            "https://youtu.be/xPZt3Z9nkT0",
+            "https://youtu.be/B7K_25kLcOQ"
+        ],
+        "author": "John Smith",
+        "rating": 4.7,
+        "total_ratings": 12000,
+        "description": "Prepare for the AWS Certified Solutions Architect - Associate exam. Learn about designing and deploying scalable, fault-tolerant, and secure applications on AWS. Gain hands-on experience with various AWS services.",
+        "price": 599,
+        "category": "AWS",
+        "duration": "20 Hours"
+    },
+    {
+        "title": "AWS Developer: Building Scalable Applications",
+        "image": "https://images.netcomlearning.com/cms/banners/how-to-become-an-aws-certified-developer-roadmap-to-aws-developer-certification.png",
+        "videos": [
+            "https://youtu.be/x88k9fuEDuE",
+            "https://youtu.be/uVt50LKfHyI",
+            "https://youtu.be/BSGcQi2WNPg",
+            "https://youtu.be/RrKRN9zRBWs",
+            "https://youtu.be/iRaai1IBlB0"
+        ],
+        "author": "Jane Williams",
+        "rating": 4.9,
+        "total_ratings": 16500,
+        "description": "Learn to build scalable and efficient applications on AWS. Understand serverless architecture using AWS Lambda, work with Amazon API Gateway, and manage data with AWS DynamoDB.",
+        "price": 749,
+        "category": "AWS",
+        "duration": "25 Hours"
+    },
+    {
+        "title": "AWS Machine Learning Specialty Certification",
+        "image": "https://www.testpreptraining.com/blog/wp-content/uploads/2020/02/Add-a-heading-1.png",
+        "videos": [
+            "https://youtu.be/vrsHO-3pkNw",
+            "https://youtu.be/u1zJvQbLs-g",
+            "https://youtu.be/0aK8CmQko0s",
+            "https://youtu.be/fgbdtNNXR0U",
+            "https://youtu.be/UrreHMI0CtA"
+        ],
+        "author": "Michael Johnson",
+        "rating": 4.6,
+        "total_ratings": 19800,
+        "description": "Become an AWS Certified Machine Learning Specialist. Learn to build, train, and deploy machine learning models using AWS services like Amazon SageMaker, Comprehend, and Rekognition.",
+        "price": 799,
+        "category": "AWS",
+        "duration": "28 Hours"
+    },
+    {
+        "title": "AWS Cloud Security: Best Practices",
+        "image": "https://www.ioanyt.com/wp-content/uploads/2023/05/inner-Image-1-1024x683.png",
+        "videos": [
+            "https://youtu.be/tmuClE3nWlk",
+            "https://youtu.be/lkksqUDlwJE",
+            "https://youtu.be/z5fZywCRFdc",
+            "https://youtu.be/mPU43QvPAHE",
+            "https://youtu.be/wfIVI-M7lbQ"
+        ],
+        "author": "David Lee",
+        "rating": 4.8,
+        "total_ratings": 14200,
+        "description": "Learn how to secure your AWS infrastructure and applications. Explore AWS Identity and Access Management (IAM), encryption, security groups, and monitoring for compliance.",
+        "price": 899,
+        "category": "AWS",
+        "duration": "30 Hours"
+    },
+    {
+        "title": "AWS Data Analytics: Big Data Solutions",
+        "image": "https://www.xenonstack.com/hubfs/aws-big-data-pipeline.png",
+        "videos": [
+            "https://youtu.be/Baag-FJNaDI",
+            "https://youtu.be/7MUJn4Lcz2U",
+            "https://youtu.be/u_8pKVPviE8",
+            "https://youtu.be/1vbXmCrkT3Y",
+            "https://youtu.be/SOTamWNgDKc"
+        ],
+        "author": "Sarah Johnson",
+        "rating": 4.5,
+        "total_ratings": 17400,
+        "description": "Master big data solutions on AWS. Learn to use Amazon Redshift, Glue, and QuickSight to analyze large datasets. Implement data pipelines and perform data warehousing on the cloud.",
+        "price": 649,
+        "category": "AWS",
+        "duration": "22 Hours"
+    },
+
+
+    {
+        "title": "Data Science Foundations: Introduction to Python",
+        "image": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230318230239/Python-Data-Science-Tutorial.jpg",
+        "videos": [
+            "https://youtu.be/LHBE6Q9XlzI",
+            "https://youtu.be/mkv5mxYu0Wk",
+            "https://youtu.be/t3uVPX6rwgM",
+            "https://youtu.be/xxpc-HPKN28",
+            "https://youtu.be/Z79AqDouS-Y"
+        ],
+        "author": "John Smith",
+        "rating": 4.7,
+        "total_ratings": 12000,
+        "description": "Begin your journey into data science with Python. Learn essential Python libraries like Pandas, NumPy, and Matplotlib. Perform data manipulation, exploration, and visualization.",
+        "price": 599,
+        "category": "Data Science",
+        "duration": "20 Hours"
+    },
+    {
+        "title": "Machine Learning for Data Scientists",
+        "image": "https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2019/02/Machine-Learning-Engineer-vs-Data-Scientist.0.jpg",
+        "videos": [
+            "https://youtu.be/rLvpY2v9hWQ",
+            "https://youtu.be/AopGnnPPczY",
+            "https://youtu.be/O0Ka_nBRtN0",
+            "https://youtu.be/t8JRidxZCXU",
+            "https://youtu.be/gViODEWrT0g"
+        ],
+        "author": "Jane Williams",
+        "rating": 4.9,
+        "total_ratings": 16500,
+        "description": "Advance your data science skills with machine learning. Explore regression, classification, and clustering algorithms. Implement models for real-world data analysis.",
+        "price": 749,
+        "category": "Data Science",
+        "duration": "25 Hours"
+    },
+    {
+        "title": "Data Wrangling and Visualization with R",
+        "image": "https://slideplayer.com/12185583/71/images/slide_1.jpg",
+        "videos": [
+            "https://youtu.be/DR26YCGbeQc",
+            "https://youtu.be/kg9Kgvv9-0g",
+            "https://youtu.be/eMOA1pPVUc4",
+            "https://youtu.be/eDrhZb2onWY",
+            "https://youtu.be/KgCgpCIOkIs"
+        ],
+        "author": "Michael Johnson",
+        "rating": 4.6,
+        "total_ratings": 19800,
+        "description": "Master data wrangling and visualization using R. Learn data manipulation with dplyr, data.table, and tidyr. Create stunning visualizations with ggplot2 and Shiny.",
+        "price": 799,
+        "category": "Data Science",
+        "duration": "28 Hours"
+    },
+    {
+        "title": "Big Data Analytics with Spark",
+        "image": "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/258800705/original/307123f904d543cbda99c00ad7e415c851ed3918/conduct-big-data-analytics-using-apache-spark-gcp-aws-or-hadoop.png",
+        "videos": [
+            "https://youtu.be/_C8kWso4ne4",
+            "https://youtu.be/rw2oOQHHz_I",
+            "https://youtu.be/R5D35zZa_vo",
+            "https://youtu.be/1PAy6d16ADQ",
+            "https://youtu.be/MS4-CjZCGsM"
+        ],
+        "author": "David Lee",
+        "rating": 4.8,
+        "total_ratings": 14200,
+        "description": "Dive into big data analytics with Apache Spark. Learn distributed data processing and Spark SQL. Perform machine learning tasks with Spark MLlib.",
+        "price": 899,
+        "category": "Data Science",
+        "duration": "30 Hours"
+    },
+    {
+        "title": "Natural Language Processing (NLP) for Data Science",
+        "image": "https://www.searchenginejournal.com/wp-content/uploads/2020/08/an-introduction-to-natural-language-processing-with-python-for-seos-5f3519eeb8368-1520x800.webp",
+        "videos": [
+            "https://youtu.be/bPpwZxasJo0",
+            "https://youtu.be/igKTO7lQxNo",
+            "https://youtu.be/X2vAabgKiuM",
+            "https://youtu.be/6I-Alfkr5K4",
+            "https://youtu.be/MpIagClRELI",
+            "https://youtu.be/5ctbvkAMQO4"
+        ],
+        "author": "Sarah Johnson",
+        "rating": 4.5,
+        "total_ratings": 17400,
+        "description": "Explore natural language processing for data science applications. Learn how to preprocess text, build word embeddings, and create sentiment analysis models.",
+        "price": 649,
+        "category": "Data Science",
+        "duration": "22 Hours"
+    },
+
+    {
+        "title": "Excel Basics: Mastering Spreadsheets",
+        "image": "https://cdn.corporatefinanceinstitute.com/assets/Basic-Excel-Formulas.png",
+        "videos": [
+            "https://youtu.be/lxq_46nY43g",
+            "https://youtu.be/K0UF-nSc_Mw",
+            "https://youtu.be/Vl0H-qTclOg",
+            "https://youtu.be/FJRm4LZv5Ws",
+            "https://youtu.be/fcbB0nkDik8"
+        ],
+        "author": "John Smith",
+        "rating": 4.7,
+        "total_ratings": 12000,
+        "description": "Learn the fundamentals of Excel and create powerful spreadsheets. Understand formulas, functions, and formatting. Build charts and pivot tables to analyze data.",
+        "price": 599,
+        "category": "Excel",
+        "duration": "20 Hours"
+    },
+    {
+        "title": "Advanced Excel: Data Analysis and Visualization",
+        "image": "https://it-s.com/wp-content/uploads/2022/12/5-best-online-courses-to-learn-advanced-excel-feat.jpeg",
+        "videos": [
+            "https://youtu.be/gTK5rNhWJyA",
+            "https://youtu.be/OOWAk2aLEfk",
+            "https://youtu.be/Vl0H-qTclOg",
+            "https://youtu.be/1PAy6d16ADQ",
+            "https://youtu.be/FJRm4LZv5Ws"
+        ],
+        "author": "Jane Williams",
+        "rating": 4.9,
+        "total_ratings": 16500,
+        "description": "Take your Excel skills to the next level with data analysis and visualization. Work with advanced functions, conditional formatting, and data tables. Create dynamic dashboards.",
+        "price": 749,
+        "category": "Excel",
+        "duration": "25 Hours"
+    },
+    {
+        "title": "Excel Macros and VBA Programming",
+        "image": "https://dz8fbjd9gwp2s.cloudfront.net/courses/5f6d951e0cf2411a4183743e/5Rik7whatsappimage20201007at15.25.36.jpg",
+        "videos": [
+            "https://youtu.be/IJQHMFLXk_c",
+            "https://youtu.be/YWJ1OIfQakQ",
+            "https://youtu.be/G05TrN7nt6k",
+            "https://youtu.be/uyj_OljPlcU",
+            "https://youtu.be/Al0viFDqNn4"
+        ],
+        "author": "Michael Johnson",
+        "rating": 4.6,
+        "total_ratings": 19800,
+        "description": "Automate tasks in Excel with macros and VBA programming. Learn to write custom functions and create user-friendly interfaces. Increase efficiency and productivity.",
+        "price": 799,
+        "category": "Excel",
+        "duration": "28 Hours"
+    },
+    {
+        "title": "Excel for Business and Financial Analysis",
+        "image": "https://img-c.udemycdn.com/course/750x422/3432872_24b7_2.jpg",
+        "videos": [
+            "https://youtu.be/bNdy0l6CWvU",
+            "https://youtu.be/MeBYShlqsak",
+            "https://youtu.be/50X2DDPWXoY",
+            "https://youtu.be/egmzpMBmH70",
+            "https://youtu.be/_g5roKHj95o"
+        ],
+        "author": "David Lee",
+        "rating": 4.8,
+        "total_ratings": 14200,
+        "description": "Apply Excel for business and financial analysis. Perform budgeting, forecasting, and cost analysis. Create financial models and interpret data for decision-making.",
+        "price": 899,
+        "category": "Excel",
+        "duration": "30 Hours"
+    },
+    {
+        "title": "Excel Tips and Tricks for Productivity",
+        "image": "https://spacecoastdaily.com/wp-content/uploads/2023/03/excel.jpg",
+        "videos": [
+            "https://youtu.be/lfW8Z0KDpAI",
+            "https://youtu.be/AOPa7ORJj4Y",
+            "https://youtu.be/KJ8KhuIi3Is",
+            "https://youtu.be/1LOlJay5Sbw",
+            "https://youtu.be/4h04mCYvj3Q"
+        ],
+        "author": "Sarah Johnson",
+        "rating": 4.5,
+        "total_ratings": 17400,
+        "description": "Discover useful Excel tips and tricks to boost your productivity. Learn keyboard shortcuts, data entry techniques, and time-saving features. Impress others with your Excel skills.",
+        "price": 649,
+        "category": "Excel",
+        "duration": "22 Hours"
+    }
+]
