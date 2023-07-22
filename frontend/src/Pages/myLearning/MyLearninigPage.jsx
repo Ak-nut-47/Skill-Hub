@@ -16,7 +16,7 @@ const MyLearningPage = () => {
     const fetchData = async () => {
         try {
             setIsLoading(true);
-            const res = await fetch('https://64ba6f8d5e0670a501d628f4.mockapi.io/skillhub', {
+            const res = await fetch('http://localhost:8080/courses', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -104,7 +104,6 @@ const MyLearningPage = () => {
 
                 }
             </Box>
-
 
         </Box>
     );

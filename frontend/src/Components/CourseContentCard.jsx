@@ -9,7 +9,7 @@ const CourseContentCard = ({ title, ind, setCurrentVideoUrl, videoUrl }) => {
     }
 
     return (
-        <div style={{ borderBottom: '1px solid black', padding: '3px', marginBottom: '15%' }}>
+        <div className='course-content' style={{ borderBottom: '1px solid black', padding: '3px', marginBottom: '15%' }}>
             <p>{`${ind + 1}. ${title}`}</p>
             <div style={{ display: 'flex', margin: '10px' }}>
                 <GoVideo />
