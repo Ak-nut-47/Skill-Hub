@@ -1,10 +1,12 @@
 const express = require("express");
-const { UserModel } = require("../model/user.model");
+
 const { BlacklistModel } = require("../model/blacklist.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-
+const middleware=require("../middleware/auth.middleware");
+const CourseModel = require("../model/courseModel");
+const UserModel=require("../model/user.model")
 const userRouter = express.Router();
 
 userRouter.get("/", async (req, res) => {
@@ -72,10 +74,10 @@ if ( !email || !password) {
     if (user) {
       bcrypt.compare(password, user.password, function (err, result) {
         if (result) {
-          var token = jwt.sign({ _id: user._id }, "sy", {
-            expiresIn: 120,
+          var token = jwt.sign({ _id: user._id }, process.env.USER_SECRET, {
+            expiresIn: "1d",
           });
-          var refreshToken = jwt.sign({ _id: user._id }, process.env.SECRET, {
+          var refreshToken = jwt.sign({ _id: user._id }, process.env.USER_SECRET, {
             expiresIn: "7d",
           });
           res.status(200).json({
@@ -120,6 +122,161 @@ userRouter.get("/refreshtoken", (req, res) => {
   }
 });
 
+
+
+// // ------------------------------adding into cart page from single product page---------------------------------------
+
+userRouter.patch("/cart/:courseId",middleware,async(req,res)=>{
+  try{
+    // const {videos}=req.body
+    // const projection={videos:0}
+  const addtoCart=await CourseModel.findById(req.params.courseId)
+  const cartItemID=String(addtoCart._id)
+  const userId=String(req.body.userID)
+  const client=await UserModel.findById(userId)
+  const checkID=client.cart.includes(cartItemID)
+  if(checkID){
+      res.send({msg:"Course already exist in cart!"})
+  }
+
+      client.cart.push(cartItemID)
+     
+      const updatePost=await UserModel.findByIdAndUpdate(userId,client,{new:true})
+      res.send(updatePost)
+
+  
+  }catch(err){
+      console.log(err)
+      return res.status(500).json({message:"Internal server error"})
+  }
+})
+
+
+//  ---------------------------------showing all the products in cart page--------------------------------
+userRouter.get("/cart",middleware,async(req,res)=>{
+  try{
+  
+  const userId=String(req.body.userID)
+  const client=await UserModel.findById(userId)
+  const checkID=client.cart
+  await client.populate("cart")
+  res.send(client.cart)
+  }catch(err){
+      console.log(err)
+      return res.status(500).json({message:"Internal server error"})
+  }
+})
+
+
+// ---------------------------------------deleteing from  cart page------------------------------2clicks for delete
+   
+userRouter.delete("/cart/:courseid",middleware,async(req,res)=>{
+  try{
+  const userId=String(req.body.userID)
+  const client=await UserModel.findById(userId)
+   await UserModel.updateOne(
+    {_id:req.body.userID}, 
+    { $pull: { cart:req.params.courseid} })
+
+  await client.populate("cart")
+
+  res.send(client.cart)
+  }catch(err){
+      console.log(err)
+      return res.status(500).json({message:"Internal server error"})
+  }
+})
+
+
+
+// -----------------------adding into my learning after payment---------------------------
+
+
+userRouter.patch("/mylearning/:courseId",middleware,async(req,res)=>{
+  try{
+  const addToMyLearning=await CourseModel.findById(req.params.courseId)
+  const mylearningItemID=String(addToMyLearning._id)
+  const userId=String(req.body.userID)
+  const client=await UserModel.findById(userId)
+
+      client.mylearning.push(mylearningItemID)
+     
+      const updatePost=await UserModel.findByIdAndUpdate(userId,client,{new:true})
+      res.send(updatePost)
+
+  
+  }catch(err){
+      console.log(err)
+      return res.status(500).json({message:"Internal server error"})
+  }
+})
+
+
+// ---------------------------------------papyment page-----------------------
+userRouter.patch("/cart/payment/:courseId",middleware,async(req,res)=>{
+  try{
+    const {payment}=req.body
+  const addToMyLearning=await CourseModel.findById(req.params.courseId)
+  const mylearningItemID=String(addToMyLearning._id)
+  const userId=String(req.body.userID)
+  const client=await UserModel.findById(userId)
+
+      client.payment.push(payment)
+     
+      const updatePost=await UserModel.findByIdAndUpdate(userId,client,{new:true})
+      res.send(updatePost)
+
+  
+  }catch(err){
+      console.log(err)
+      return res.status(500).json({message:"Internal server error"})
+  }
+})
+
+
+
+// ---------------------------------display products in my learning---------------------------------
+userRouter.get("/mylearning",middleware,async(req,res)=>{
+  try{
+  const userId=String(req.body.adminId)
+  const client=await UserModel.findById(userId)
+  const checkID=client.mylearning
+  await client.populate("mylearning")
+
+  res.send(client.mylearning)
+  }catch(err){
+      console.log(err)
+      return res.status(500).json({message:"Internal server error"})
+  }
+})
+
+  
+// --------------------------------delete products from my learing page
+
+
+userRouter.delete("/mylearning/:courseid",middleware,async(req,res)=>{
+  try{
+  const userId=String(req.body.userID)
+  const client=await UserModel.findById(userId)
+   await UserModel.updateOne(
+    {_id:req.body.userID}, 
+    { $pull: { mylearning:req.params.courseid} })
+
+  await client.populate("mylearning")
+
+  res.send(client.mylearning)
+  }catch(err){
+      console.log(err)
+      return res.status(500).json({message:"Internal server error"})
+  }
+})
+
+
+
+
 module.exports = {
   userRouter
 };
+
+
+

@@ -8,6 +8,7 @@ import SingleVideoPage from "../Pages/singleVideo/SingleVideoPage";
 import LandingPage from "../Pages/LandingPage";
 import PageNotFound from "../Pages/PageNotFound";
 import { SingleDetailPage } from "../Pages/SingleDetailPage";
+import { AdminHomepage }  from "../Pages/Admin/AdminPage";
 import Footer from "../Components/Footer";
 import { Navbar } from "../Components/Navbar";
 
@@ -48,7 +49,12 @@ export const MainRoutes = () => {
 
   ];
 
-  const AdminPath = [];
+  const AdminPath = [
+    {
+      path:"/admin",
+      element:<AdminHomepage/>
+    }
+   ];
 
   return (
     <Routes>

@@ -11,6 +11,9 @@ const courseSchema=mongoose.Schema({
    price:{type:"Number",required:true},
    category:{type:"String",required:true},
    duration:{type:"String",required:true}
+},{
+    
+   versionKey:false
 })
 
 

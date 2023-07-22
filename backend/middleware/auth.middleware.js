@@ -3,7 +3,7 @@ const { BlacklistModel } = require("../model/blacklist.model");
 require("dotenv").config();
 
 
-const auth=async(req,res,next)=>{
+const middleware=async(req,res,next)=>{
     try{
         const token=req.headers.authorization?.split(" ")[1] || null;
         if(token){
@@ -13,11 +13,12 @@ const auth=async(req,res,next)=>{
             if(existingToken.length > 0){
                 return res.status(400).json({error:"Please Login Again!!"});
             }
-            let decoded=jwt.verify(token, process.env.SECRET);
+            let decoded=jwt.verify(token, process.env.USER_SECRET);
             // req.body.userID=decoded.userID;
             // return next()
+           
             if(decoded){
-                req.body.userID=decoded.userID
+                req.body.userID=decoded._id
                 req.body.user=decoded.user
                 next()
             }
@@ -29,6 +30,4 @@ const auth=async(req,res,next)=>{
     }
 }
 
-module.exports={
-    auth
-}
+module.exports=middleware
