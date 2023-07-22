@@ -8,6 +8,8 @@ import SingleVideoPage from "../Pages/singleVideo/SingleVideoPage";
 import LandingPage from "../Pages/LandingPage";
 import PageNotFound from "../Pages/PageNotFound";
 import { SingleDetailPage } from "../Pages/SingleDetailPage";
+import Footer from "../Components/Footer";
+import { Navbar } from "../Components/Navbar";
 
 export const MainRoutes = () => {
   const PageRoutes = [
@@ -40,7 +42,7 @@ export const MainRoutes = () => {
       element: <SingleVideoPage />,
     },
     {
-      path: "/detail/:id",
+      path: "/detail/:courseId",
       element: <SingleDetailPage />,
     }
 
@@ -56,8 +58,8 @@ export const MainRoutes = () => {
           path={ele.path}
           element={
             <>
-              {/* <Navbar /> {ele.element} <Footer /> */}
-              {ele.element}
+              <Navbar /> {ele.element} <Footer />
+              {/* {ele.element}  */}
             </>
           }
         />
