@@ -3,6 +3,7 @@ import { Box, Flex, Image, Text, Button, Input } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { deleteCart, getcart } from "../redux/cart/action";
 import { useDispatch } from "react-redux";
+
 export const CartList = ({
   id,
   title,
@@ -22,22 +23,35 @@ export const CartList = ({
       dispatch(getcart);
     });
   };
+
   return (
     <Box pt={"16px"}>
       <hr style={{ border: "1px solid #E0E0E0", marginBottom: "13px" }} />
-      <Flex>
-        <Image src={image} alt="" width={"150px"} height="90px" />
-        <Box pl="15px" width="450px">
+      <Flex flexDirection={{ base: "column", md: "row" }}>
+        <Image
+          src={image}
+          alt=""
+          width={{ base: "100%", md: "150px" }}
+          height={{ base: "auto", md: "90px" }}
+        />
+        <Box
+          pl={{ base: "0", md: "15px" }}
+          width={{ base: "100%", md: "450px" }}
+          mt={{ base: "10px", md: "0" }}
+        >
           <Text
-            fontSize={"16px"}
+            fontSize={{ base: "16px", md: "18px" }}
             fontWeight={700}
             fontStyle="normal"
-            textAlign="left"
+            textAlign={{ base: "center", md: "left" }}
           >
             {title}
           </Text>
-          <Text textAlign="left">By {author}</Text>
-          <Flex gap="10px">
+          <Text textAlign={{ base: "center", md: "left" }}>By {author}</Text>
+          <Flex
+            gap="10px"
+            justifyContent={{ base: "center", md: "flex-start" }}
+          >
             <Text bg="#FFF59D">{category}</Text>
             <Text bg="#B2DFDB">{duration}</Text>
             <Text color="#BF360C" fontWeight={700}>
@@ -57,7 +71,12 @@ export const CartList = ({
             </Text>
           </Flex>
         </Box>
-        <Box>
+        <Box
+          mt={{ base: "10px", md: "0" }}
+          width={{ base: "100%", md: "auto" }}
+          display={{ base: "flex", md: "block" }}
+          justifyContent={{ base: "space-between", md: "initial" }}
+        >
           <Button
             bg="none"
             color="#7986CB"
@@ -68,48 +87,54 @@ export const CartList = ({
             }}
             onClick={() => handleDelete(id)}
           >
-            <Text textAlign="right" fontSize="16px">
+            <Text
+              textAlign={{ base: "center", md: "right" }}
+              fontSize={{ base: "16px", md: "18px" }}
+            >
               Remove
             </Text>
           </Button>
-          <Button
-            bg="none"
-            color="#7986CB"
-            pt="10px"
-            display="block"
-            size="16px"
-            textAlign="right"
-            _hover={{
-              backgroundColor: "none",
-            }}
-          >
-            Move to Wishlist
-          </Button>
+          <Box display={{ base: "flex", md: "block" }}>
+            <Button
+              bg="none"
+              color="#7986CB"
+              pt="10px"
+              pr={{ base: "40px" }}
+              display={{ base: "block", md: "block" }}
+              size={{ base: "14px", md: "16px" }}
+              textAlign={{ base: "center", md: "right" }}
+              _hover={{
+                backgroundColor: "none",
+              }}
+            >
+              Move to Wishlist
+            </Button>
+            <Flex flexDirection={{ base: "row", md: "column" }}>
+              <Text
+                textAlign={{ base: "center", md: "center" }}
+                width={{ base: "100%", md: "100px" }}
+                pt={{ base: "10px", md: "30px" }}
+                fontSize={{ base: "16px", md: "18px" }}
+                fontWeight={700}
+                fontStyle="normal"
+              >
+                ₹{price}
+              </Text>
+              <Text
+                display={{ md: "none" }}
+                textAlign={{ base: "center", md: "center" }}
+                pt={{ base: "10px", md: "30px" }}
+                fontSize={{ base: "16px", md: "18px" }}
+                fontWeight={"normal"}
+                fontStyle="normal"
+                as="s"
+                color="#78909C"
+              >
+                ₹{original_price}
+              </Text>
+            </Flex>
+          </Box>
         </Box>
-
-        <Flex>
-          <Text
-            textAlign="center"
-            width="100px"
-            pt="30px"
-            fontSize={"16px"}
-            fontWeight={700}
-            fontStyle="normal"
-          >
-            ₹{price}
-          </Text>
-          <Text
-            textAlign="center"
-            pt="30px"
-            fontSize={"16px"}
-            fontWeight={"normal"}
-            fontStyle="normal"
-            as="s"
-            color="#78909C"
-          >
-            ₹{original_price}
-          </Text>
-        </Flex>
       </Flex>
     </Box>
   );
