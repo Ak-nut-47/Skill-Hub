@@ -13,7 +13,7 @@ const middleware=async(req,res,next)=>{
             if(existingToken.length > 0){
                 return res.status(400).json({error:"Please Login Again!!"});
             }
-            const decoded=jwt.verify(token, "adminToken");
+            const decoded=jwt.verify(token, process.env.ADMIN_SECRET);
             if(decoded){
                 req.body.adminId=decoded.adminId
                 req.body.username=decoded.username

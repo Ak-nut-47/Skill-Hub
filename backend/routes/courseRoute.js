@@ -1,26 +1,26 @@
 const express=require("express")
 const courseRouter=express.Router()
 const CourseModel=require("../model/courseModel")
-const middleware=require("../middleware/adminmiddleware")
+const middleware=require("../middleware/auth.middleware")
 
-courseRouter.post("/add",middleware,async(req,res)=>{
-    try{
-    const course=await CourseModel.create(req.body) 
-    res.send({"msg":"Course created",course})
-    }
-    catch(err){
-        res.status(500).send(err)
-    }
-})
+// courseRouter.post("/add",middleware,async(req,res)=>{
+//     try{
+//     const course=await CourseModel.create(req.body) 
+//     res.send({"msg":"Course created",course})
+//     }
+//     catch(err){
+//         res.status(500).send(err)
+//     }
+// })
 
 courseRouter.get("/",middleware,async(req,res)=>{
     try{
         const {videos}=req.body
         const projection={videos:0}
-        const {q,rating,minRating,maxRating,category,pageNo,perPage,sortBy,field}=req.query
+        const {search,rating,minRating,maxRating,category,pageNo,perPage,sortBy,field}=req.query
         const query={}
-        if(q){
-            query.title={$regex: q, $options:"i"}
+        if(search){
+            query.title={$regex: search, $options:"i"}
         }
         if(category){
             query.category={$regex:category,$options:"i"}
@@ -51,32 +51,45 @@ courseRouter.get("/",middleware,async(req,res)=>{
    } 
 })
 
-courseRouter.patch("/update/:courseId",middleware,async(req,res)=>{
-    
+
+courseRouter.get("/singleProductPage/:courseId",middleware,async(req, res) => {
     try{
-    // const course=await CourseModel.findById(req.params.courseId)
-    const updateCourse=await CourseModel.findByIdAndUpdate(req.params.courseId,req.body,{new:true})
-    // // console.log(course)
-    res.send(updateCourse)
+        const {videos}=req.body
+        const projection={videos:0}
+      const singleProductPage=await CourseModel.findById(req.params.courseId,projection)
+      res.send(singleProductPage)
+     
+    }catch(err){
+      console.log(err)
+    }
+    });
+
+// courseRouter.patch("/update/:courseId",middleware,async(req,res)=>{
+    
+//     try{
+//     // const course=await CourseModel.findById(req.params.courseId)
+//     const updateCourse=await CourseModel.findByIdAndUpdate(req.params.courseId,req.body,{new:true})
+//     // // console.log(course)
+//     res.send(updateCourse)
    
-    }catch(err){
-        res.send({err:"err"})
-    }
-})
+//     }catch(err){
+//         res.send({err:"err"})
+//     }
+// })
 
 
-courseRouter.delete("/delete/:courseId",middleware,async(req,res)=>{
+// courseRouter.delete("/delete/:courseId",middleware,async(req,res)=>{
     
-    try{
-    // const course=await CourseModel.findById(req.params.courseId)
-    await CourseModel.findByIdAndDelete(req.params.courseId)
-    // console.log(course)
-    res.send("course deleted")
+//     try{
+//     // const course=await CourseModel.findById(req.params.courseId)
+//     await CourseModel.findByIdAndDelete(req.params.courseId)
+//     // console.log(course)
+//     res.send("course deleted")
 
-    }catch(err){
-        res.send({err:"err"})
-    }
-})
+//     }catch(err){
+//         res.send({err:"err"})
+//     }
+// })
 
 
 

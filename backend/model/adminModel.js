@@ -5,7 +5,8 @@ const adminSchema=mongoose.Schema({
     email:{type:String,required:true},
     phone:{type:Number,required:true},
     password:{type:String,required:true},
-    cart:{type:[String],ref:"course",default:[]},
-    mylearning:{type:[String],default:[]}
+},{
+    
+    versionKey:false
 })
 module.exports=mongoose.model("admin",adminSchema)

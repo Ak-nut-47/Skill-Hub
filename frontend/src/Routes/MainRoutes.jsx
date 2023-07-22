@@ -8,6 +8,7 @@ import SingleVideoPage from "../Pages/singleVideo/SingleVideoPage";
 import LandingPage from "../Pages/LandingPage";
 import PageNotFound from "../Pages/PageNotFound";
 import { SingleDetailPage } from "../Pages/SingleDetailPage";
+import { AdminHomepage }  from "../Pages/Admin/AdminPage";
 
 export const MainRoutes = () => {
   const PageRoutes = [
@@ -42,6 +43,10 @@ export const MainRoutes = () => {
     {
       path: "/detail/:id",
       element: <SingleDetailPage />,
+    },
+    {
+      path:"/admin",
+      element:<AdminHomepage/>
     }
 
   ];
