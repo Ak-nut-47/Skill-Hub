@@ -7,14 +7,15 @@ import LandingPageCarousel from "../Components/LandingPageComponents/LandingPage
 import Section5 from "../Components/LandingPageComponents/Section5";
 import Section4 from "../Components/LandingPageComponents/Section4";
 import Section6 from "../Components/LandingPageComponents/Section6";
+import SwiperSlider from "../Components/Swiper Slider Components/SwiperSlider";
 
 const LandingPage = () => {
   return (
     <Flex direction={"column"}>
-      {/* <Navbar /> */}
       <Section1 />
       <Section2 />
       <Section4 />
+      <SwiperSlider />
       <LandingPageCarousel />
       <Section5 />
       <Section6 />
