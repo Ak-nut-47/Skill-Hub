@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Flex,
   Box,
-  Select,
   Input,
-  Button,
   IconButton,
   useBreakpointValue,
   Text,
@@ -13,16 +11,55 @@ import {
 import { FaSearch, FaBars } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import CustomSelect from "./NavbarComponents/CustomSelect";
+import SearchbarCard from "./LandingPageComponents/SearchbarCard";
 
 export const Navbar = () => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const navigate = useNavigate();
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+  const wrapperRef = useRef(null);
+
+  // Debouncing logic
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchQuery.trim() !== "") {
+        fetchResults();
+      } else {
+        setSearchResults([]);
+      }
+    }, 800);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery]);
+
+  const fetchResults = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(
+        `https://anxious-bull-glasses.cyclic.app/course?search=${encodeURIComponent(
+          searchQuery
+        )}`
+      );
+      const data = await response.json();
+      setSearchResults(data.course);
+      setIsLoading(false);
+      setShowResults(true); // Show search results when they are available
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      setIsLoading(false);
+    }
+
   const token = localStorage.getItem("frontendtoken");
 
   const handleLogout = () => {
     localStorage.removeItem("frontendtoken");
     // window.location.reload();
     navigate("/")
+
   };
 
   // Responsive font sizes for text
@@ -39,7 +76,7 @@ export const Navbar = () => {
       as="nav"
       align="center"
       justify="space-between"
-      p={4}
+      p={"8px 5px"}
       bg="#f5f5f5"
       boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
       position="fixed"
@@ -79,7 +116,10 @@ export const Navbar = () => {
               color="black"
               placeholder="Search For Anything"
               _placeholder={{ color: "#555454" }}
-              w="100%" // This makes the Input occupy the remaining space
+              w="100%"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setShowResults(true)} // Show search results on focus
             />
           </Box>
           <IconButton
@@ -204,6 +244,34 @@ export const Navbar = () => {
             </Box>
           )}
         </Flex>
+      )}
+
+      {/* Display search results in a dropdown */}
+      {showResults && searchResults?.length > 0 && (
+        <Box
+          position="absolute"
+          top="100%"
+          left="50%"
+          transform="translateX(-50%)"
+        >
+          <Box
+            boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
+            p={4}
+            borderRadius="4px"
+            zIndex={99}
+          >
+            {isLoading ? (
+              <Flex>
+                {" "}
+                <Text size={"5xl"}>Loading...</Text>
+              </Flex>
+            ) : (
+              searchResults?.map((result) => (
+                <SearchbarCard key={result._id} {...result} />
+              ))
+            )}
+          </Box>
+        </Box>
       )}
     </Flex>
   );

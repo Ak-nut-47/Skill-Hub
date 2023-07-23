@@ -11,8 +11,12 @@ import { SingleDetailPage } from "../Pages/SingleDetailPage";
 import { AdminHomepage } from "../Pages/Admin/AdminPage";
 import Footer from "../Components/Footer";
 import { Navbar } from "../Components/Navbar";
+
+import Homepage from "../Pages/Homepage";
+
 import { AdminSignup } from "../Pages/AdminSignup";
 import { AdminSignin } from "../Pages/AdminSignin";
+
 
 export const MainRoutes = () => {
   const PageRoutes = [
@@ -48,6 +52,11 @@ export const MainRoutes = () => {
       path: "/detail/:courseId",
       element: <SingleDetailPage />,
     },
+
+    {
+      path: "/homepage",
+      element: <Homepage />,
+    },
   ];
 
   const AdminPath = [
@@ -55,6 +64,7 @@ export const MainRoutes = () => {
       path: "/admin",
       element: <AdminHomepage />,
     },
+
     {
       path: "/admin-signup",
       element: <AdminSignup />,
