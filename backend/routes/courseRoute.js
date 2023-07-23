@@ -13,7 +13,7 @@ const middleware=require("../middleware/auth.middleware")
 //     }
 // })
 
-courseRouter.get("/",middleware,async(req,res)=>{
+courseRouter.get("/",async(req,res)=>{
     try{
         const {videos}=req.body
         const projection={videos:0}
@@ -22,9 +22,22 @@ courseRouter.get("/",middleware,async(req,res)=>{
         if(search){
             query.title={$regex: search, $options:"i"}
         }
+        // if(category){
+        //     query.category={$regex:category,$options:"i"}
+        // }
         if(category){
-            query.category={$regex:category,$options:"i"}
-        }
+          let cat=typeof category
+          console.log(cat)
+      if (cat==="object") {
+   
+        query.category ={ $in: [...category] };
+       
+      
+      } else if(cat==="string"){
+        query.category =  category;
+        console.log(query)
+      }
+            }
         if(minRating && maxRating){
           query.$and=[
             {rating:{$gte:minRating}},
