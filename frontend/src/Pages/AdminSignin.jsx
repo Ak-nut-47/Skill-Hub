@@ -20,8 +20,8 @@ import axios from "axios";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-export const Signin = () => {
-  const [email, setEmail] = useState("");
+export const AdminSignin = () => {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -50,16 +50,16 @@ export const Signin = () => {
     });
   };
 
-  const fillAllCredential = (msg) => {
-    toast({
-      title: msg,
-      description: "Please Share Required Info!!",
-      status: "info",
-      duration: 9000,
-      isClosable: true,
-      position: "top",
-    });
-  };
+  // const fillAllCredential = (msg) => {
+  //   toast({
+  //     title: msg,
+  //     description: "Please Share Required Info!!",
+  //     status: "info",
+  //     duration: 9000,
+  //     isClosable: true,
+  //     position: "top",
+  //   });
+  // };
 
   const wrongCredential = (msg) => {
     toast({
@@ -74,34 +74,34 @@ export const Signin = () => {
 
   const submitLogin = () => {
     const payload = {
-      email,
+      username,
       password,
     };
     //.post(`${process.env.REACT_APP_SERVER}/users/login`, payload)
-   // .post("http://localhost:8080/users/login", payload)
+    //.post("http://localhost:8080/admin/login", payload)
 
     axios
-      .post("https://anxious-bull-glasses.cyclic.app/users/login", payload)
+      .post("https://anxious-bull-glasses.cyclic.app/admin/login", payload)
       .then((res) => {
         //alert(res.data.msg);
         localStorage.setItem("frontendtoken", res.data.token);
-        if (res.data.msg === "Login Successful") {
+        if (res.data.msg === "Login Sucessful!") {
           signinSuccess(res.data.msg);
-          navigate("/");
+          navigate("/admin");
         }
-        if (res.data.msg === "Please Fill All The Required Credentials") {
-          fillAllCredential(res.data.msg);
-        }
-        if (res.data.msg === "Password Not Match!!") {
+        // if (res.data.msg === "Please Fill All The Required Credentials") {
+        //   fillAllCredential(res.data.msg);
+        // }
+        if (res.data.msg === "Incorrect Password") {
           wrongCredential(res.data.msg);
         }
-        if (res.data.msg === "User Not Found!") {
+        if (res.data.msg === "First Sign Up") {
           wrongEmail(res.data.msg);
         }
       })
       .catch((err) => console.log(err));
 
-    setEmail("");
+    setUsername("");
     setPassword("");
   };
 
@@ -111,7 +111,6 @@ export const Signin = () => {
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
-      pt={{base:"50px", md: "40px", lg: "80px" }}
     >
       <Stack
         //border={"1px solid red"}
@@ -123,7 +122,7 @@ export const Signin = () => {
         px={6}
       >
         <Stack align={"center"}>
-          <Heading fontSize={"4xl"}>Sign In </Heading>
+          <Heading fontSize={"4xl"}>Admin Sign In </Heading>
         </Stack>
 
         <Box
@@ -133,12 +132,12 @@ export const Signin = () => {
           p={8}
         >
           <Stack spacing={4}>
-            <FormControl id="email" isRequired>
-              <FormLabel>Email</FormLabel>
+            <FormControl id="username" isRequired>
+              <FormLabel>Username</FormLabel>
               <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </FormControl>
 
@@ -189,8 +188,8 @@ export const Signin = () => {
             <Stack pt={6}>
               <Text align={"center"}>
                 If have no account?{" "}
-                <NavLink style={{ color: "#a435f0" }} to="/signup">
-                  Sign Up
+                <NavLink style={{ color: "#a435f0" }} to="/admin-signup">
+                 Admin Sign Up
                 </NavLink>
               </Text>
             </Stack>

@@ -16,7 +16,10 @@ adminrouter.post("/register",async(req,res)=>{
     }else{
     const newpassword=await bcrypt.hash(password,10)
     const newadmin = await admin.create({...req.body,password:newpassword})
-    res.send(newadmin)
+    //res.send(newadmin)
+    res
+      .status(200)
+      .json({ msg: "Registration Successful", newadmin });
     }
 }
     catch(err){
