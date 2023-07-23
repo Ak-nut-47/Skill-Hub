@@ -9,14 +9,14 @@ const CourseModel = require("../model/courseModel");
 const UserModel=require("../model/user.model")
 const userRouter = express.Router();
 
-userRouter.get("/", async (req, res) => {
-  try {
-    const user = await UserModel.find();
-    res.send(user);
-  } catch (error) {
-    res.status(500).json({error:error.message});
-  }
-});
+// userRouter.get("/", async (req, res) => {
+//   try {
+//     const user = await UserModel.find();
+//     res.send(user);
+//   } catch (error) {
+//     res.status(500).json({error:error.message});
+//   }
+// });
 
 const passwordReq =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -270,6 +270,20 @@ userRouter.delete("/mylearning/:courseid",middleware,async(req,res)=>{
       return res.status(500).json({message:"Internal server error"})
   }
 })
+
+
+userRouter.get("/mylearning/singleVideoPage/:courseId",middleware, async (req, res) => {
+  const { courseId } = req.params;    
+  try {
+    const singleProductPage = await CourseModel.findOne({ _id: courseId });
+    if (!singleProductPage) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    res.status(200).json(singleProductPage);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 
 
