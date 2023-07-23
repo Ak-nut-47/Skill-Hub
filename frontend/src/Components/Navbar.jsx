@@ -17,6 +17,13 @@ import CustomSelect from "./NavbarComponents/CustomSelect";
 export const Navbar = () => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const navigate = useNavigate();
+  const token = localStorage.getItem("frontendtoken");
+
+  const handleLogout = () => {
+    localStorage.removeItem("frontendtoken");
+    // window.location.reload();
+    navigate("/")
+  };
 
   // Responsive font sizes for text
   const fontSize = useBreakpointValue({
@@ -126,7 +133,7 @@ export const Navbar = () => {
               Teach on Skill Hub
             </Link>
           </Box>
-          <Box mr={4}>
+          {/* <Box mr={4}>
             <Link
               textDecoration="none"
               color="#a435f0"
@@ -135,20 +142,67 @@ export const Navbar = () => {
             >
               Login
             </Link>
-          </Box>
+          </Box> */}
 
-          {/* Join for Free Button */}
-          <Link
-            bg="#a435f0"
-            color="white"
-            borderRadius="5px"
-            _hover={{ bg: "#a435f0" }}
-            href="/signup"
-            p={"10px 7px"}
-            fontSize={fontSize}
-          >
-            Join for free
-          </Link>
+          {token ? (
+            <Button
+              marginRight="10px"
+              padding="10px"
+              _hover={{
+                bgColor: "white",
+                color: "#9904fc",
+                border: "2px solid #9904fc",
+                textDecoration: "none",
+              }}
+              borderRadius="5px"
+              // fontWeight="bold"
+              color="white"
+              bg="#a435f0"
+              display={{ base: "none", md: "block" }}
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          ) : (
+            <Box display={"flex"}>
+              <Link
+                href="/signin"
+                textDecoration="none"
+                marginRight="10px"
+                padding="10px"
+                _hover={{
+                  bgColor: "white",
+                  color: "#9904fc",
+                  border: "2px solid #9904fc",
+                  // textDecoration: "none",
+                }}
+                borderRadius="5px"
+                // fontWeight="bold"
+                color="white"
+                bg="#a435f0"
+                display={{ base: "none", md: "block" }}
+              >
+                Login
+              </Link>
+
+              {/* Join for Free Button */}
+              <Link
+                bg="#a435f0"
+                color="white"
+                borderRadius="5px"
+                _hover={{
+                  bgColor: "white",
+                  color: "#9904fc",
+                  border: "2px solid #9904fc",
+                }}
+                href="/signup"
+                p={"10px 7px"}
+                fontSize={fontSize}
+              >
+                Join for free
+              </Link>
+            </Box>
+          )}
         </Flex>
       )}
     </Flex>
