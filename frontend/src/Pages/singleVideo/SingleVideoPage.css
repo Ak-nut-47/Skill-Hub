@@ -22,7 +22,7 @@ h2 {
     padding: 20px;
     /* border-bottom: 1px solid black; */
     /* border-right: 1px solid black; */
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 
 .container2 {
@@ -32,7 +32,7 @@ h2 {
     /* border-bottom: 1px solid black; */
     text-align: left;
     /* border-right: 1px solid black; */
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 
 .container2>div {
@@ -45,7 +45,7 @@ h2 {
     padding: 20px;
     /* border-bottom: 1px solid black; */
     /* border-right: 1px solid black; */
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 
 .container3>div {
@@ -58,7 +58,7 @@ h2 {
     justify-content: space-evenly;
     padding: 20px;
     /* border-bottom: 1px solid black; */
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
     /* border-right: 1px solid black; */
 }
 
@@ -72,7 +72,7 @@ h2 {
     /* justify-content: space-evenly; */
     padding: 20px;
     /* border-bottom: 1px solid black; */
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
     /* border-right: 1px solid black; */
     margin-bottom: 20px;
 }
@@ -105,7 +105,7 @@ h2 {
     width: 50%;
     border-top: 1px solid black;
     padding-left: 10px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 
 .right-side h2 {
@@ -147,7 +147,7 @@ input{
 
 
 .question-container{
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 
 .question-input{

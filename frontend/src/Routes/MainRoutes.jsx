@@ -4,7 +4,7 @@ import { Signin } from "../Pages/Signin";
 import { Signup } from "../Pages/Signup";
 import Cart from "../Pages/Cart";
 import MyLearningPage from "../Pages/myLearning/MyLearninigPage";
-import SingleVideoPage from "../Pages/singleVideo/SingleVideoPage";
+import {SingleVideoPage} from "../Pages/singleVideo/SingleVideoPage";
 import LandingPage from "../Pages/LandingPage";
 import PageNotFound from "../Pages/PageNotFound";
 import { SingleDetailPage } from "../Pages/SingleDetailPage";
@@ -62,9 +62,8 @@ export const MainRoutes = () => {
   const AdminPath = [
     {
       path: "/admin",
-      element: <AdminHomepage />,
+      element: <AdminHomepage />
     },
-
     {
       path: "/admin-signup",
       element: <AdminSignup />,

@@ -137,3 +137,4 @@ const LandingPageCarousel = ({ category, setCategory }) => {
 };
 
 export default LandingPageCarousel;
+

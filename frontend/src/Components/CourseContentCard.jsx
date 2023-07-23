@@ -1,3 +1,4 @@
+import { Button, Box, Text } from '@chakra-ui/react';
 import { color } from 'framer-motion';
 import React from 'react'
 import { GoVideo } from 'react-icons/go';
@@ -9,13 +10,18 @@ const CourseContentCard = ({ title, ind, setCurrentVideoUrl, videoUrl }) => {
     }
 
     return (
-        <div className='course-content' style={{ borderBottom: '1px solid black', padding: '3px', marginBottom: '15%' }}>
-            <p>{`${ind + 1}. ${title}`}</p>
-            <div style={{ display: 'flex', margin: '10px' }}>
+        <Box className='course-content' borderBottom='1px solid black' padding='3px' marginBottom='15%' _hover={{
+            boxShadow: '2xl',
+            backgroundColor:'gray.50'
+        }} >
+            <Text>{`${ind + 1}. ${title}`}</Text>
+            <Box style={{ display: 'flex', margin: '10px' }}>
                 <GoVideo />
-                <button style={{ marginLeft: '10px', border: '1px solid black', padding: '0px 10px 0px 10px', backgroundColor: 'black', color: 'white', borderRadius: '3px' }} onClick={handlePlay}>play</button>
-            </div>
-        </div>
+                <Button marginLeft='10px' border='1px solid black' backgroundColor='#a435f0' color='white' borderRadius='3px' width={'70px'} height={'30px'} _hover={{
+                    backgroundColor: 'purple'
+                }} onClick={handlePlay}>play</Button>
+            </Box>
+        </Box>
     )
 }
 
