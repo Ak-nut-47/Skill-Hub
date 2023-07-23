@@ -15,7 +15,7 @@ const Card = ({
   const miniimg =
     "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/60SA8pGxPXMmJf4n7umK1H/ccec31bbe2358210bf8391dcba6cd2f1/umich.png?auto=format%2Ccompress&dpr=1&w=&h=55";
   return (
-    <Link to={`/detail/${_id}`} target="_blank">
+    <Link to={`/detail/${_id}`}>
       <Flex
         direction={"column"}
         gap={"5px"}
