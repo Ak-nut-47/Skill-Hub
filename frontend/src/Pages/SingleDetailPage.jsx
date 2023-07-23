@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate, useParams } from "react-router-dom";
+// import axios from "axios";
 import {
   Box,
   Container,
@@ -14,25 +14,17 @@ import {
   SimpleGrid,
   StackDivider,
   useColorModeValue,
-  VisuallyHidden,
   List,
   ListItem,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
 } from "@chakra-ui/react";
-import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+// import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import RatingStars from "../Components/RatingComponent/RatingStars";
 
 export const SingleDetailPage = () => {
   const { courseId } = useParams();
   const token = localStorage.getItem("frontendtoken");
   const [course, setCourse] = useState({});
-  const [loading, setLoading] = useState(false);
-
+  const navigate=useNavigate()
   // function Rating({ rating, total_ratings }) {
   //   return (
   //     <Box d="flex" alignItems="center">
@@ -61,46 +53,63 @@ export const SingleDetailPage = () => {
   //   );
   // }
 
-  const singlePage = async () => {
-    setLoading(true);
-    let data = await axios
-      .get(`http://localhost:8080/courses/sigleProductPage${courseId}`)
-      .then((res) => {
-        setCourse(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+  // const singlePage = () => {
+  // // setLoading(true);
+  // // .get(`https://anxious-bull-glasses.cyclic.app/course/singleProductPage/${id}`)
+
+  //    axios
+  //     .get(`http://localhost:8080/course/singleProductPage/${id}`,{
+  // headers: {
+  //   "Content-Type": "application/json",
+  //   authorization: `Bearer ${localStorage.getItem("frontendtoken")}`
+  // }}
+  // )
+  //     .then((res) => {
+  //       setCourse(res.data);
+  //       console.log(res);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     })
+  // };
 
   useEffect(() => {
-    singlePage();
-  }, []);
+    //fetch(`http://localhost:8080/course/singleProductPage/${courseId}`, {
+    fetch(
+      `https://anxious-bull-glasses.cyclic.app/course/singleProductPage/${courseId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // authorization: `Bearer ${localStorage.getItem("frontendtoken")}`
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => setCourse(data))
+      .catch((err) => console.log(err));
+    // singlePage()
+  }, [courseId]);
 
   const addToCart = () => {
-    localStorage.setItem("cart", course.price);
+  // localStorage.setItem("cart", course.price);
+  fetch(
+    `https://anxious-bull-glasses.cyclic.app/users/cart/${courseId}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("frontendtoken")}`
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
   };
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const currentUrl = window.location.href;
-
-  // const handleModalOpen = () => {
-  //     setIsModalOpen(true);
-  // };
-
-  // const handleModalClose = () => {
-  //     setIsModalOpen(false);
-  // };
-
-  // const handleCopyLink = () => {
-  //     alert('Link copied!');
-  // };
-
   return (
-    <Container maxW={"7xl"}>
+    <Container maxW={"7xl"} pt={{ base: "50px", md: "40px", lg: "80px" }}>
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
         spacing={{ base: 8, md: 10 }}
@@ -117,7 +126,7 @@ export const SingleDetailPage = () => {
             h={{ base: "100%", sm: "400px", lg: "500px" }}
           />
         </Flex>
-        <Stack spacing={{ base: 6, md: 10, lg: 1 }}>
+        <Stack spacing={{ base: 6, md: 10, lg: 1 }} textAlign={"left"}>
           <Box as={"header"}>
             <Heading
               lineHeight={1.1}
@@ -126,14 +135,20 @@ export const SingleDetailPage = () => {
             >
               {course.title}
             </Heading>
-            <Text
-              color={useColorModeValue("gray.900", "gray.400")}
-              fontWeight={300}
-              fontSize={"2xl"}
-              width={"20%"}
+            <Heading
+              //color={useColorModeValue("gray.900", "gray.400")}
+              lineHeight={1.5}
+              fontWeight={600}
+              fontSize={{ base: "xl", sm: "xl", lg: "2xl" }}
+              // width={"20%"}
+              color={"red"}
+              display={"flex"}
             >
-              ₹{course.price}
-            </Text>
+              Price:
+              <Text as={"span"} color={"black"} ml={"4px"} fontWeight={300}>
+                ₹{course.price}
+              </Text>
+            </Heading>
           </Box>
 
           <Stack
@@ -146,11 +161,6 @@ export const SingleDetailPage = () => {
             }
           >
             <VStack spacing={{ base: 4, sm: 6 }}>
-              {course.author ? (
-                <Text color="gray.500" fontSize={"2xl"} fontWeight={"300"}>
-                  {course.author}
-                </Text>
-              ) : null}
               <Text fontSize={"lg"}>{course.description}</Text>
             </VStack>
 
@@ -164,13 +174,26 @@ export const SingleDetailPage = () => {
               >
                 Course Details
               </Text>
-              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
-                <List spacing={2}>
+              <SimpleGrid
+                // border={"1px solid"}
+                columns={{ base: 1, md: 2, lg: 3 }}
+                spacing={10}
+              >
+                <List spacing={1}>
+                  <ListItem>
+                    <Flex justifyContent="space-between">
+                      <Text as={"span"} fontWeight={"bold"}>
+                        Instructor:
+                      </Text>
+                      {course.author ? course.author : null}
+                    </Flex>
+                  </ListItem>
                   <ListItem>
                     <Flex
                       justifyContent="space-between"
                       alignItems={"center"}
-                      gap={3}
+
+                      // gap={1}
                     >
                       {/* {course.rating?course.rating:null} */}
                       <Text as={"span"} fontWeight={"bold"}>
@@ -181,9 +204,9 @@ export const SingleDetailPage = () => {
                           fontSize="sm"
                           color={"#b46918"}
                           fontWeight={"bold"}
+                          ml={"2px"}
                         >
                           {course.rating}
-                          {/* 4.5 */}
                         </Text>
                         <Text>
                           <RatingStars
@@ -191,8 +214,15 @@ export const SingleDetailPage = () => {
                             total_ratings={course.total_ratings}
                           />
                         </Text>
-                        <Text fontSize="sm">{` (${course.total_ratings}) `}</Text>
                       </Flex>
+                    </Flex>
+                  </ListItem>
+                  <ListItem>
+                    <Flex justifyContent="space-between">
+                      <Text as={"span"} fontWeight={"bold"}>
+                        Overview:
+                      </Text>
+                      {course.total_ratings ? course.total_ratings : null}
                     </Flex>
                   </ListItem>
 
@@ -214,36 +244,32 @@ export const SingleDetailPage = () => {
                     </Flex>
                   </ListItem>
                 </List>
-
-                <List spacing={2}>
-                  {/* <ListItem>
-                  <Text as={'span'} fontWeight={'bold'}>
-                  Overlooking:
-                  </Text>{' '}
-                  
-                </ListItem> */}
-                </List>
               </SimpleGrid>
             </Box>
           </Stack>
 
           {token ? (
-            <Link to="/payment">
+            <Link to={"/cart"}>
               {" "}
               <Button
                 rounded={"none"}
                 w={"full"}
-                mt={1}
+                mt={10}
                 size={"lg"}
                 py={"7"}
                 bg={"#a435f0"}
                 color={"white"}
                 textTransform={"uppercase"}
                 _hover={{
-                  backgroundColor: "#9900ff",
+                  // backgroundColor: "#9900ff",
                   boxShadow: "xl",
+                  bgColor: "white",
+                  color: "#9904fc",
+                  border: "2px solid #9904fc",
                 }}
                 onClick={addToCart}
+                borderRadius={"5px"}
+                // position={"fixed"}
               >
                 Buy Now
               </Button>
@@ -253,16 +279,19 @@ export const SingleDetailPage = () => {
               <Button
                 rounded={"none"}
                 w={"full"}
-                mt={1}
+                mt={10}
                 size={"lg"}
                 py={"7"}
                 bg={"#a435f0"}
                 color={"white"}
                 textTransform={"uppercase"}
                 _hover={{
-                  backgroundColor: "#9900ff",
+                  bgColor: "white",
+                  color: "#9904fc",
+                  border: "2px solid #9904fc",
                   boxShadow: "xl",
                 }}
+                borderRadius={"5px"}
               >
                 Buy Now
               </Button>
@@ -270,7 +299,6 @@ export const SingleDetailPage = () => {
           )}
         </Stack>
       </SimpleGrid>
-      <Box>{/* <Image src={} alt=""></Image> */}</Box>
     </Container>
   );
 };

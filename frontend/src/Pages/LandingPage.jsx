@@ -1,4 +1,3 @@
-import Footer from "../Components/Footer";
 import { Flex } from "@chakra-ui/react";
 // import { Navbar } from "../Components/Navbar";
 import Section1 from "../Components/LandingPageComponents/Section1";
@@ -23,7 +22,6 @@ const LandingPage = () => {
       <LandingPageCarousel category={category} />
       <Section5 />
       <Section6 />
-      {/* <Footer /> */}
     </Flex>
   );
 };
