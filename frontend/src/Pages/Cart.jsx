@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CartList } from "../Components/CartList";
 import { getcart } from "../redux/cart/action";
 import { Box, Text, Input, Button, Flex, Stack } from "@chakra-ui/react";
+
 const Cart = () => {
   const dispatch = useDispatch();
   const { cart } = useSelector((store) => store.cartReducer);
@@ -20,32 +21,33 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getcart);
   }, []);
+
   return (
-    <Box width={"87%"} margin="auto">
+    <Box width={["100%", "100%", "87%"]} margin="auto" px={4}>
       <Box>
-        <Text fontSize={"40px"} fontWeight={"bold"} textAlign={"left"}>
+        <Text fontSize={["24px", "40px"]} fontWeight="bold" textAlign="left">
           Shopping Cart
         </Text>
         <Text
-          fontSize={"16px"}
+          fontSize={["14px", "16px"]}
           fontWeight={700}
-          textAlign={"left"}
-          pt={"30px"}
+          textAlign="left"
+          pt={["20px", "30px"]}
           fontStyle="normal"
         >
           {cart.length} Course in Cart
         </Text>
       </Box>
-      <Flex gap="120">
-        <Box>
+      <Flex direction={["column", "column", "row"]} gap={[0, 0, 8]}>
+        <Box width={["100%", "100%", "70%"]}>
           {cart?.map((el) => {
             return <CartList key={el.id} {...el} />;
           })}
         </Box>
-        <Box width="300px">
+        <Box width={["100%", "100%", "100%", "30%"]}>
           <Stack>
             <Text
-              fontSize={"16px"}
+              fontSize={["14px", "16px"]}
               fontWeight={700}
               fontStyle="normal"
               textAlign="left"
@@ -54,7 +56,7 @@ const Cart = () => {
               Total:{" "}
             </Text>
             <Text
-              fontSize={"32px"}
+              fontSize={["24px", "32px"]}
               fontWeight={700}
               fontStyle="normal"
               textAlign="left"
@@ -62,7 +64,7 @@ const Cart = () => {
               ₹{totalPrice}{" "}
             </Text>
             <Text
-              fontSize={"16px"}
+              fontSize={["14px", "16px"]}
               fontWeight={700}
               fontStyle="normal"
               textAlign="left"
@@ -78,7 +80,7 @@ const Cart = () => {
             _hover={{
               backgroundColor: "#B39DDB",
             }}
-            width="300px"
+            width="100%"
             height="50px"
             mt="10px"
           >
@@ -86,7 +88,7 @@ const Cart = () => {
           </Button>
           <hr style={{ border: "1px solid #E0E0E0", marginTop: "13px" }} />
           <Text
-            fontSize={"16px"}
+            fontSize={["14px", "16px"]}
             fontWeight={700}
             fontStyle="normal"
             textAlign="left"
@@ -100,7 +102,7 @@ const Cart = () => {
             </Box>
             <Box
               as="span"
-              fontSize="16px"
+              fontSize={["14px", "16px"]}
               fontWeight="700"
               fontStyle="normal"
               textAlign="left"
@@ -110,7 +112,7 @@ const Cart = () => {
             </Box>{" "}
             is applied
           </Text>
-          <Box width="300px" mt="10px" height="47px">
+          <Box width="100%" mt="10px" height="47px">
             <Input
               placeholder="Enter Coupon"
               display="inline"
