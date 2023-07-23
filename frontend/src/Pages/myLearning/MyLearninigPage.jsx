@@ -96,8 +96,8 @@ const MyLearningPage = () => {
     };
 
     return (
-        <Box w={'100%'} m={'auto'} paddingTop={'100px'}>
-            <Box height="80px" bg="black" mb={'8%'} >
+        <Box w={'100%'} m={'auto'} paddingTop={'70px'}>
+            <Box height="80px" bg="black" mb={'60px'} >
                 <Text fontSize="35px" as="b" color="white">My Learning</Text>
                 <Flex margin="auto" alignItems="center" justifyContent="space-around" bg="black" paddingBottom={'10px'} mt="24px">
                     <Button variant="link" bg="black" color="white" border="none" as="b" onClick={() => handleButtonText('All courses')}>

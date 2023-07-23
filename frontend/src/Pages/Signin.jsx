@@ -87,7 +87,7 @@ export const Signin = () => {
         localStorage.setItem("frontendtoken", res.data.token);
         if (res.data.msg === "Login Successful") {
           signinSuccess(res.data.msg);
-          navigate("/");
+          navigate("/homepage");
         }
         if (res.data.msg === "Please Fill All The Required Credentials") {
           fillAllCredential(res.data.msg);

@@ -7,6 +7,7 @@ import {
   useBreakpointValue,
   Text,
   Link,
+  Button
 } from "@chakra-ui/react";
 import { FaSearch, FaBars } from "react-icons/fa";
 import { useNavigate } from "react-router";
@@ -52,6 +53,7 @@ export const Navbar = () => {
       console.error("Error fetching search results:", error);
       setIsLoading(false);
     }
+  }
 
   const token = localStorage.getItem("frontendtoken");
 
@@ -76,7 +78,7 @@ export const Navbar = () => {
       as="nav"
       align="center"
       justify="space-between"
-      p={"8px 5px"}
+      p={"4px 3px"}
       bg="#f5f5f5"
       boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
       position="fixed"
@@ -275,4 +277,4 @@ export const Navbar = () => {
       )}
     </Flex>
   );
-};
+}
