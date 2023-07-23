@@ -8,9 +8,10 @@ import SingleVideoPage from "../Pages/singleVideo/SingleVideoPage";
 import LandingPage from "../Pages/LandingPage";
 import PageNotFound from "../Pages/PageNotFound";
 import { SingleDetailPage } from "../Pages/SingleDetailPage";
-import { AdminHomepage }  from "../Pages/Admin/AdminPage";
+import { AdminHomepage } from "../Pages/Admin/AdminPage";
 import Footer from "../Components/Footer";
 import { Navbar } from "../Components/Navbar";
+import Homepage from "../Pages/Homepage";
 
 export const MainRoutes = () => {
   const PageRoutes = [
@@ -45,16 +46,19 @@ export const MainRoutes = () => {
     {
       path: "/detail/:courseId",
       element: <SingleDetailPage />,
-    }
-
+    },
+    {
+      path: "/homepage",
+      element: <Homepage />,
+    },
   ];
 
   const AdminPath = [
     {
-      path:"/admin",
-      element:<AdminHomepage/>
-    }
-   ];
+      path: "/admin",
+      element: <AdminHomepage />,
+    },
+  ];
 
   return (
     <Routes>
@@ -74,7 +78,6 @@ export const MainRoutes = () => {
       {AdminPath.map((ele, key) => (
         <Route key={key} path={ele.path} element={<>{ele.element}</>} />
       ))}
-
     </Routes>
   );
 };

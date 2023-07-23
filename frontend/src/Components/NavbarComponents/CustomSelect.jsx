@@ -23,17 +23,6 @@ const options = [
   "Math and Logic",
 ];
 
-const CustomOption = ({ value, label }) => (
-  <Flex align="center" justify="space-between">
-    <Text>{label}</Text>
-    {value === "Explore" ? (
-      <IoIosArrowForward color="#a435f0" />
-    ) : (
-      <IoIosArrowForward color="#a435f0" />
-    )}
-  </Flex>
-);
-
 const CustomSelect = () => {
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
@@ -59,7 +48,7 @@ const CustomSelect = () => {
     >
       {options.map((option, index) => (
         <option key={index} value={option}>
-          <CustomOption value={option} label={option} />
+          {option}
         </option>
       ))}
     </Select>

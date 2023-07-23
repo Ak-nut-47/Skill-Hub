@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Flex, Heading, useBreakpointValue } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,7 +7,7 @@ import "./LandingPageComponent.css";
 import Card from "./Card";
 import LoadingComponent from "../LoadingComponents/LoadingComponent";
 
-const LandingPageCarousel = () => {
+const LandingPageCarousel = ({ category }) => {
   const [loading, setLoading] = useState(true);
   const [course, setCourse] = useState([]);
   const arr = [1, 2, 3, 4];
@@ -50,17 +50,9 @@ const LandingPageCarousel = () => {
     ],
   };
 
-  const sliderItemsToShow = useBreakpointValue({
-    base: 8,
-    sm: 10,
-    md: 12,
-    lg: 16,
-    xl: course?.length,
-  });
-
   useEffect(() => {
-    // const url = "https://arivu-sever-link.onrender.com/courses/all";
-    const url = "https://64ba6f8d5e0670a501d628f4.mockapi.io/skillhub";
+    // const url = "https://64ba6f8d5e0670a501d628f4.mockapi.io/skillhub";
+    const url = `https://anxious-bull-glasses.cyclic.app/course`;
     setLoading(true);
 
     fetch(url)
@@ -72,7 +64,7 @@ const LandingPageCarousel = () => {
         }
       })
       .then((data) => {
-        setCourse(data);
+        setCourse(data.course);
 
         setLoading(false);
       })
@@ -80,20 +72,18 @@ const LandingPageCarousel = () => {
         console.error("Error:", error);
         setLoading(false);
       });
-  }, []);
+  }, [category]);
 
   return (
     <Flex direction={"column"} width="80%" p={"20px"} m={"auto"}>
       <Slider {...settings}>
         {!loading
-          ? course
-              ?.slice(0, sliderItemsToShow)
-              .map((el) => (
+          ? course?.map((el) =>
+              el.category == category ? (
                 <Card {...el} key={el._id ? el._id : Date.now().toString()} />
-              ))
-          : Array.from({ length: sliderItemsToShow }, (_, i) => (
-              <LoadingComponent key={i} />
-            ))}
+              ) : null
+            )
+          : arr.map((el, i) => <LoadingComponent key={i} />)}
       </Slider>
     </Flex>
   );

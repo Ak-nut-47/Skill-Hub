@@ -22,6 +22,8 @@ const Section5 = () => {
         lg: "15px",
         xl: "20px",
       }}
+      mb={5}
+      mt={5}
       alignItems={"flex-start"}
     >
       <Flex direction={"column"} margin={"auto"}>
