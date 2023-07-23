@@ -10,7 +10,6 @@ import {
   Input,
   InputGroup,
   Button,
-  Select,
   Text,
   useColorModeValue,
   useToast,
@@ -19,11 +18,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import axios from "axios";
 
-export const Signup = () => {
-  const [name, setName] = useState("");
+export const AdminSignup = () => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -41,21 +39,21 @@ export const Signup = () => {
     });
   };
 
-  const emailExist = (msg) => {
-    toast({
-      title: msg,
-      description: "Please Enter New Email or Login!!",
-      status: "info",
-      duration: 9000,
-      isClosable: true,
-      position: "top",
-    });
-  };
+  // const emailExist = (msg) => {
+  //   toast({
+  //     title: msg,
+  //     description: "Please Enter New Email or Login!!",
+  //     status: "info",
+  //     duration: 9000,
+  //     isClosable: true,
+  //     position: "top",
+  //   });
+  // };
 
   const fillAllCredential = (msg) => {
     toast({
       title: msg,
-      description: "Please Share Required Info!!",
+      description: "Please fill all the details",
       status: "error",
       duration: 9000,
       isClosable: true,
@@ -63,68 +61,61 @@ export const Signup = () => {
     });
   };
 
-  const RequiredPass = (msg) => {
-    toast({
-      title: msg,
-      description:
-        "Password Format Should Contain Atleast One UpperCase Character,Number,Special Character and Length Greater Than 8",
-      status: "warning",
-      duration: 9000,
-      isClosable: true,
-      position: "top",
-    });
-  };
+  // const RequiredPass = (msg) => {
+  //   toast({
+  //     title: msg,
+  //     description:
+  //       "Password Format Should Contain Atleast One UpperCase Character,Number,Special Character and Length Greater Than 8",
+  //     status: "warning",
+  //     duration: 9000,
+  //     isClosable: true,
+  //     position: "top",
+  //   });
+  // };
 
   const handleSubmit = () => {
     const payload = {
-      name,
+      username,
       email,
       phone,
-      gender,
       password,
     };
 
-    //.post("http://localhost:8080/users/register", payload)
+    //.post("http://localhost:8080/admin/register", payload)
     axios
-      .post("https://anxious-bull-glasses.cyclic.app/users/register", payload)
+      .post("https://anxious-bull-glasses.cyclic.app/admin/register", payload)
       .then((res) => {
         //alert(res.data.msg);
         if (res.data.msg === "Registration Successful") {
           signupSuccess(res.data.msg);
-          navigate("/signin");
+          navigate("/admin-signin");
         }
-        if (res.data.msg === "Invalid Password Format!!") {
-          RequiredPass(res.data.msg);
-        }
+        // if (res.data.msg === "Invalid Password Format!!") {
+        //   RequiredPass(res.data.msg);
+        // }
         if (res.data.msg === "Please Fill All The Required Credentials") {
           fillAllCredential(res.data.msg);
         }
-        if (res.data.msg === "User Already Exists!") {
-          emailExist(res.data.msg);
-        }
+        // if (res.data.msg === "User Already Exists!") {
+        //   emailExist(res.data.msg);
+        // }
       })
       .catch((err) => {
         console.log(err.message);
       });
-    setName("");
+    setUsername("");
     setEmail("");
     setPhone("");
-    setGender("");
     setPassword("");
   };
 
   return (
-    <div 
-      //style={{paddingTop:"70px"}}
-    >
-      <Flex
+    <Flex
       // border={"1px solid "}
       minH={"100vh"}
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
-      pt={{base:"50px", md: "40px", lg: "80px" }}
-
     >
       <Stack
         //border={"1px solid red"}
@@ -137,7 +128,7 @@ export const Signup = () => {
       >
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"}>
-            Sign Up
+           Admin Sign Up
           </Heading>
         </Stack>
 
@@ -152,9 +143,9 @@ export const Signup = () => {
               <FormLabel>Name</FormLabel>
               <Input
                 type="text"
-                value={name}
-                name="name"
-                onChange={(e) => setName(e.target.value)}
+                value={username}
+                name="username"
+                onChange={(e) => setUsername(e.target.value)}
               />
             </FormControl>
 
@@ -166,19 +157,6 @@ export const Signup = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </FormControl>
-
-            <FormControl id="gender" isRequired>
-              <FormLabel>Gender</FormLabel>
-              <Select
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                name="gender"
-              >
-                <option value="">Choose Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </Select>
             </FormControl>
 
             <FormControl id="phone" isRequired>
@@ -231,8 +209,8 @@ export const Signup = () => {
             <Stack pt={6}>
               <Text align={"center"}>
                 Already a user?{" "}
-                <NavLink style={{ color: "#a435f0" }} to="/signin">
-                  Sign In
+                <NavLink style={{ color: "#a435f0" }} to="/admin-signin">
+                 Admin Sign In
                 </NavLink>
               </Text>
             </Stack>
@@ -240,6 +218,5 @@ export const Signup = () => {
         </Box>
       </Stack>
     </Flex>
-    </div>
   );
 };

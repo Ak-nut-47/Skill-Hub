@@ -15,7 +15,7 @@ const Card = ({
   const miniimg =
     "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/60SA8pGxPXMmJf4n7umK1H/ccec31bbe2358210bf8391dcba6cd2f1/umich.png?auto=format%2Ccompress&dpr=1&w=&h=55";
   return (
-    <Link to={`/singlePage/${_id}`} target="_blank">
+    <Link to={`/detail/${_id}`} target="_blank">
       <Flex
         direction={"column"}
         gap={"5px"}
@@ -25,14 +25,12 @@ const Card = ({
         boxShadow="xl"
         p={4}
         m={2}
-        minH={{
-          sm: "420px",
-          md: "400px",
-          lg: "400px",
-        }}
+        h={"450px"}
         _hover={{ boxShadow: "2xl", cursor: "pointer" }}
       >
-        <Image src={image} loading="lazy" alt={title} objectFit="cover" />
+        <Flex h={"40%"}>
+          <Image src={image} loading="lazy" alt={title} objectFit="cover" />
+        </Flex>
         <Box display="flex" alignItems="center" mb={2}>
           <Image src={miniimg} alt="Logo" boxSize={4} mr={2} />
           <Text
@@ -59,9 +57,7 @@ const Card = ({
           mb={2}
           textTransform={"capitalize"}
         >
-          {description.split(",")[0].length > 15
-            ? description.split(".")[0]
-            : description.split(",")[0]}
+          {description.slice(0, 58)}
         </Text>
         <Flex alignItems={"center"} gap={2}>
           <Text fontSize="sm" color={"#b46918"} fontWeight={"bold"}>

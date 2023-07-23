@@ -1,37 +1,140 @@
-// import React, { useRef, useState } from "react";
-// // Import Swiper React components
-// import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useEffect, useState } from "react";
+import { Text, Flex } from "@chakra-ui/react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "../LandingPageComponents/LandingPageComponent.css";
 
-// // Import Swiper styles
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/pagination";
+const LandingPageCarousel = ({ category, setCategory }) => {
+  var settings = {
+    swipe: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
-// import "./styles.css";
+  return (
+    <Flex
+      direction={"column"}
+      width="76%"
+      m={"auto"}
+      borderBottom={"2px solid #c9c9c9"}
+      p={"8px 0px"}
+    >
+      <Slider {...settings}>
+        <Text
+          _hover={{
+            cursor: "pointer",
+            backgroundColor: "#c9c9c9",
+            borderRadius: "10px",
+          }}
+          fontWeight={category === "Python" ? "extrabold" : null}
+          onClick={() => {
+            setCategory("Python");
+          }}
+        >
+          Python
+        </Text>
+        <Text
+          _hover={{
+            cursor: "pointer",
+            backgroundColor: "#c9c9c9",
+            borderRadius: "10px",
+          }}
+          fontWeight={category === "Web Development" ? "extrabold" : null}
+          onClick={() => {
+            setCategory("Web Development");
+          }}
+        >
+          Web Dev
+        </Text>
+        <Text
+          _hover={{
+            cursor: "pointer",
+            backgroundColor: "#c9c9c9",
+            borderRadius: "10px",
+          }}
+          fontWeight={category === "Machine Learning" ? "extrabold" : null}
+          onClick={() => {
+            setCategory("Machine Learning");
+          }}
+        >
+          ML
+        </Text>
+        <Text
+          _hover={{
+            cursor: "pointer",
+            backgroundColor: "#c9c9c9",
+            borderRadius: "10px",
+          }}
+          fontWeight={category === "AWS" ? "extrabold" : null}
+          onClick={() => {
+            setCategory("AWS");
+          }}
+        >
+          AWS
+        </Text>
+        <Text
+          _hover={{
+            cursor: "pointer",
+            backgroundColor: "#c9c9c9",
+            borderRadius: "10px",
+          }}
+          fontWeight={category === "Data Science" ? "extrabold" : null}
+          onClick={() => {
+            setCategory("Data Science");
+          }}
+        >
+          Data Science
+        </Text>
+        <Text
+          _hover={{
+            cursor: "pointer",
+            backgroundColor: "#c9c9c9",
+            borderRadius: "10px",
+          }}
+          fontWeight={category === "Excel" ? "extrabold" : null}
+          onClick={() => {
+            setCategory("Excel");
+          }}
+        >
+          Excel
+        </Text>
+      </Slider>
+    </Flex>
+  );
+};
 
-// // import required modules
-// import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+export default LandingPageCarousel;
 
-// export default function App() {
-//   return (
-//     <>
-//       <Swiper
-//         cssMode={true}
-//         navigation={true}
-//         pagination={true}
-//         mousewheel={true}
-//         keyboard={true}
-//         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-//         slidesPerView={5}
-//         className="mySwiper"
-//       >
-//         <SwiperSlide>Slide 1</SwiperSlide>
-//         <SwiperSlide>Slide 2</SwiperSlide>
-//         <SwiperSlide>Slide 3</SwiperSlide>
-//         <SwiperSlide>Slide 4</SwiperSlide>
-//         <SwiperSlide>Slide 5</SwiperSlide>
-//         <SwiperSlide>Slide 6</SwiperSlide>
-//       </Swiper>
-//     </>
-//   );
-// }
