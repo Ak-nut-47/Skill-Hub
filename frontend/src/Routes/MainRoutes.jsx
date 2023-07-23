@@ -4,11 +4,11 @@ import { Signin } from "../Pages/Signin";
 import { Signup } from "../Pages/Signup";
 import Cart from "../Pages/Cart";
 import MyLearningPage from "../Pages/myLearning/MyLearninigPage";
-import SingleVideoPage from "../Pages/singleVideo/SingleVideoPage";
+import {SingleVideoPage} from "../Pages/singleVideo/SingleVideoPage";
 import LandingPage from "../Pages/LandingPage";
 import PageNotFound from "../Pages/PageNotFound";
 import { SingleDetailPage } from "../Pages/SingleDetailPage";
-import { AdminHomepage }  from "../Pages/Admin/AdminPage";
+import { AdminHomepage } from "../Pages/Admin/AdminPage";
 import Footer from "../Components/Footer";
 import { Navbar } from "../Components/Navbar";
 
@@ -51,10 +51,10 @@ export const MainRoutes = () => {
 
   const AdminPath = [
     {
-      path:"/admin",
-      element:<AdminHomepage/>
+      path: "/admin",
+      element: <AdminHomepage />
     }
-   ];
+  ];
 
   return (
     <Routes>

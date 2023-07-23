@@ -15,8 +15,8 @@ const LandingPage = () => {
       <Section1 />
       <Section2 />
       <Section4 />
-      <SwiperSlider />
-      <LandingPageCarousel />
+      {/* <SwiperSlider />
+      <LandingPageCarousel /> */}
       <Section5 />
       <Section6 />
       {/* <Footer /> */}

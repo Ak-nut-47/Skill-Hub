@@ -13,17 +13,71 @@ const MyLearningPage = () => {
     const [isError, setIsError] = useState(false);
     const [learningData, setLearningData] = useState([]);
 
+
+    const handleRemoveCourse = async (courseid) => {
+        console.log(courseid)
+        // const confirmDelete = window.confirm("Are you sure you want to remove this course?");
+      
+        // if (!confirmDelete) {
+        //   return;
+        // }
+      
+        // try {
+            // Assuming you might want to show a loading state while the request is in progress
+            // setIsLoading(true);
+          
+            fetch(`https://anxious-bull-glasses.cyclic.app/users/mylearning/${courseid}`, {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+                authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGJiYzBjZWRiN2MxNDUwMDg1ODcxYWYiLCJpYXQiOjE2OTAxMzY5NDUsImV4cCI6MTY5MDIyMzM0NX0.9AcZkHQpa6rvVEKuF7a1iwa2-zx-NMEOTo2fKTgZYmI',
+              },
+            }).then((res) => {
+                if (!res.ok) {
+                  throw new Error(`Request failed with status ${res.status}`);
+                }
+                return res.json();
+              })
+              .then((data) => {
+                fetchData()
+                console.log(data);
+              })
+    
+          
+      
+        //   console.log('adds')
+        //   if (!res.ok) {
+        //     throw new Error('Failed to remove the course');
+        //   }
+        //   fetchData()
+        //   console.log("sdfd")
+        //   const data = await res.json();
+        //   console.log(data);
+        //   setIsLoading(false);
+        //   alert('Course removed successfully');
+        // }.catch (error) {
+        //   console.log(error);
+        //   setIsError(true);
+        //   setIsLoading(false);
+        //   alert('Failed to remove the course. Please try again later.');
+        // }
+      };
+      
+    
+
     const fetchData = async () => {
         try {
             setIsLoading(true);
-            const res = await fetch('http://localhost:8080/courses', {
+            const res = await fetch('https://anxious-bull-glasses.cyclic.app/users/mylearning', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     // authorization: `Bearer ${localStorage.getItem('token')}`
+                    'authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGJiYzBjZWRiN2MxNDUwMDg1ODcxYWYiLCJpYXQiOjE2OTAxMzU1NjUsImV4cCI6MTY5MDIyMTk2NX0.4YeEXVjbdwAKhgeUE0EXIekSG4A1e1-IVZu6_A6iDjE`
                 },
             });
             const data = await res.json();
+            console.log(data)
             setLearningData(data);
             setIsLoading(false);
         } catch (error) {
@@ -42,10 +96,10 @@ const MyLearningPage = () => {
     };
 
     return (
-        <Box>
-            <Box height="130px" bg="black">
-                <Text fontSize="35px" as="b" ml="20px" color="white">My Learning</Text>
-                <Flex margin="auto" alignItems="center" justifyContent="space-around" bg="black" mt="80px">
+        <Box w={'100%'} m={'auto'} paddingTop={'100px'}>
+            <Box height="80px" bg="black" mb={'8%'} >
+                <Text fontSize="35px" as="b" color="white">My Learning</Text>
+                <Flex margin="auto" alignItems="center" justifyContent="space-around" bg="black" paddingBottom={'10px'} mt="24px">
                     <Button variant="link" bg="black" color="white" border="none" as="b" onClick={() => handleButtonText('All courses')}>
                         <Text>All courses</Text>
                     </Button>
@@ -67,7 +121,7 @@ const MyLearningPage = () => {
                     </Button>
                 </Flex>
             </Box>
-            <Box mt={'60px'}>
+            <Box mt={'30px'}>
                 {isLoading ? (
                     // <Spinner
                     //     thickness='4px'
@@ -76,29 +130,32 @@ const MyLearningPage = () => {
                     //     color='blue.500'
                     //     size='xl'
                     // />
-                    <h1>Loading...</h1>
+                    <Text>Loading...</Text>
                 ) : learningData?.length > 0 ? (
                     // Mapping through learnningData array and rendering MylearningCard component
-                    <div className='card'>
+                    <Box className='card'>
                         {
                             learningData?.map((ele, ind) => (
-                                <MylearningCard key={ind} data={ele} />
+                                <MylearningCard key={ind} data={ele} handleRemoveCourse={handleRemoveCourse} />
                             ))
                         }
-                    </div>
+                    </Box>
                 ) : (
-                    <Box w={"60%"} m={'auto'} border={"1px solid black"} p={"10px"} margin={'auto'}>
+                    <Box w={"60%"} m={'auto'} border={"1px solid black"} p={"10px"} margin={'auto'} mb={'8%'}>
                         <Flex>
                             <BsStopwatch />
                             <Text as='b' borderRight={'1px solid black'}>Schedule learning time</Text>
                             <Text>Learning a little each day adds up. Research shows that students who make learning a habit are more likely to reach their goals. Set time aside to learn and get reminders using your learning scheduler.
                             </Text>
                         </Flex>
-                        <Button h={'30px'} mr={'10'} variant={'ghost'} border={'none'} bg={'black'} color='white' _hover={{
-                            background: "purple",
+                        <Button h={'30px'} mr={'10'} variant={'ghost'} border={'none'} bg={'#a435f0'} color='white' _hover={{
+                            background: "#9900ff",
                             color: "white",
                         }}>Get started</Button>
-                        <Button border={'none'} bg={'white'}>Dismiss</Button>
+                        <Button border={'none'} color={"white"} bg={'#a435f0'} hover={{
+                            background: "#9900ff",
+                            color: "black",
+                        }}>Dismiss</Button>
                     </Box>
                 )
 
