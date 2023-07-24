@@ -4,7 +4,7 @@ import { Signin } from "../Pages/Signin";
 import { Signup } from "../Pages/Signup";
 import Cart from "../Pages/Cart";
 import MyLearningPage from "../Pages/myLearning/MyLearninigPage";
-import {SingleVideoPage} from "../Pages/singleVideo/SingleVideoPage";
+import { SingleVideoPage } from "../Pages/singleVideo/SingleVideoPage";
 import LandingPage from "../Pages/LandingPage";
 import PageNotFound from "../Pages/PageNotFound";
 import { SingleDetailPage } from "../Pages/SingleDetailPage";
@@ -16,7 +16,7 @@ import Homepage from "../Pages/Homepage";
 
 import { AdminSignup } from "../Pages/AdminSignup";
 import { AdminSignin } from "../Pages/AdminSignin";
-
+import Payment from "../Pages/Payment";
 
 export const MainRoutes = () => {
   const PageRoutes = [
@@ -41,6 +41,10 @@ export const MainRoutes = () => {
       element: <Cart />,
     },
     {
+      path: "/payment",
+      element: <Payment />,
+    },
+    {
       path: "/mylearning",
       element: <MyLearningPage />,
     },
@@ -62,7 +66,7 @@ export const MainRoutes = () => {
   const AdminPath = [
     {
       path: "/admin",
-      element: <AdminHomepage />
+      element: <AdminHomepage />,
     },
     {
       path: "/admin-signup",
@@ -90,12 +94,7 @@ export const MainRoutes = () => {
       ))}
 
       {AdminPath.map((ele, key) => (
-        <Route key={key} path={ele.path} element={
-          <>
-            {ele.element}
-          </>
-        } 
-        />
+        <Route key={key} path={ele.path} element={<>{ele.element}</>} />
       ))}
     </Routes>
   );
