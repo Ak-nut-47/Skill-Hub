@@ -30,7 +30,7 @@ const MyLearningPage = () => {
               method: 'DELETE',
               headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer authorization: Bearer ${localStorage.getItem('frontendtoken')}`,
+                authorization: `Bearer ${localStorage.getItem('frontendtoken')}`,
               },
             }).then((res) => {
                 if (!res.ok) {
