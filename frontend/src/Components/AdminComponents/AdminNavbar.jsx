@@ -11,10 +11,11 @@ import {
 } from "@chakra-ui/react";
 import { FaSearch, FaBars } from "react-icons/fa";
 import { useNavigate } from "react-router";
-import CustomSelect from "./NavbarComponents/CustomSelect";
-import SearchbarCard from "./LandingPageComponents/SearchbarCard";
+import CustomSelect from "../NavbarComponents/CustomSelect";
+import SearchbarCard from "../LandingPageComponents/SearchbarCard";
+import { BiBell } from "react-icons/bi";
 
-export const Navbar = () => {
+export const AdminNavbar = ({title}) => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const navigate = useNavigate();
 
@@ -82,8 +83,9 @@ export const Navbar = () => {
       bg="white" //white
       // boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
       position="fixed"
-      width="100%"
+      width="86%"
       zIndex={5}
+      ml={"210px"}
     >
       <Flex
         align="center"
@@ -97,14 +99,14 @@ export const Navbar = () => {
       >
         <Box onClick={() => navigate("/")}>
           <Text fontSize={"2xl"} fontWeight="extrabold" color="#a435f0">
-            SKILL HUB
+            Admin
           </Text>
         </Box>
-        {!isMobile && (
-          <Box ml={4}>
-            <CustomSelect />
-          </Box>
-        )}
+        <Box onClick={() => navigate("/")}>
+          <Text fontSize={"2xl"} fontWeight="extrabold" color="#a435f0">
+            {title}
+          </Text>
+        </Box>
       </Flex>
 
       {!isMobile ? (
@@ -157,16 +159,16 @@ export const Navbar = () => {
 
       {!isMobile && (
         <Flex align="center">
-          <Box mr={4}>
-            <Link
+          <Box mr={8}> 
+            <Box
               _hover={{ color: "#a435f0", textDecoration: "underline" }}
               href="/enterprise"
               fontSize={fontSize}
             >
-              Skill Hub Business
-            </Link>
+             <BiBell/>
+            </Box>
           </Box>
-          <Box mr={4}>
+          {/* <Box mr={4}>
             <Link
               _hover={{ color: "#a435f0", textDecoration: "underline" }}
               href="/universities"
@@ -174,7 +176,7 @@ export const Navbar = () => {
             >
               Teach on Skill Hub
             </Link>
-          </Box>
+          </Box> */}
           {/* <Box mr={4}>
             <Link
               textDecoration="none"
@@ -224,11 +226,11 @@ export const Navbar = () => {
                 bg="#a435f0"
                 display={{ base: "none", md: "block" }}
               >
-                Login
+                Logout
               </Link>
 
               {/* Join for Free Button */}
-              <Link
+              {/* <Link
                 bg="#a435f0"
                 color="white"
                 borderRadius="5px"
@@ -242,7 +244,7 @@ export const Navbar = () => {
                 fontSize={fontSize}
               >
                 Join for free
-              </Link>
+              </Link> */}
             </Box>
           )}
         </Flex>

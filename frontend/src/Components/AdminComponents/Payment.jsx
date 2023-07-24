@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react'
 import {Sidebar} from "./Sidebar"
 import { Flex ,Box } from '@chakra-ui/react'
 import { AdminNavbar} from './AdminNavbar'
-import { UsersCard } from './UsersCard'
 import LoadingComponent from '../LoadingComponents/LoadingComponent'
+import { PaymentCard } from './PaymentCard'
 
 
-export const UserManage = () => {
+export const Payment = () => {
 const [users,setUsers]=useState([])
 
 
@@ -50,15 +50,14 @@ console.log(users)
    <p style={{marginLeft:"-30px"}}>UserID</p>
    <p>Name</p>
    <p>Email</p>
-   <p>Gender</p>
-   <p>Phone No.</p>
    <p>Cart Items</p>
    <p>My Learning</p>
+   <p>Payment</p>
    <p>Edit</p>
    <p style={{paddingRight:"10px"}}>Delete</p>
     </div>
       {
-        users.length>0 ? users.map((el,ind)=><UsersCard key={ind} ind={ind} {...el}/>):<div style={{display:"flex",justifyContent:"center",height:"100px",marginTop:"150px"}}>
+        users.length>0 ? users.map((el,ind)=><PaymentCard key={ind} ind={ind} {...el}/>):<div style={{display:"flex",justifyContent:"center",height:"100px",marginTop:"150px"}}>
         <LoadingComponent /></div>
       }
       </Box>

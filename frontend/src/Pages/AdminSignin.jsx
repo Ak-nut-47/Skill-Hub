@@ -84,7 +84,7 @@ export const AdminSignin = () => {
       .post("https://anxious-bull-glasses.cyclic.app/admin/login", payload)
       .then((res) => {
         //alert(res.data.msg);
-        localStorage.setItem("frontendtoken", res.data.token);
+        localStorage.setItem("adminToken", res.data.adminToken);
         if (res.data.msg === "Login Sucessful!") {
           signinSuccess(res.data.msg);
           navigate("/admin");

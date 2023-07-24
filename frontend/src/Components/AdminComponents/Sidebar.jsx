@@ -50,10 +50,10 @@ export const Sidebar = () => {
       </Flex>
     <SidebarItem navSize={navSize} icon={FiHome} title="Dashboard" />
     <SidebarItem navSize={navSize} icon={BsFillPenFill} title="Manage Blogs"/>
-    <SidebarItem navSize={navSize} icon={AiOutlineRead} title="Course" link="/admin/coursemanage"/>
-    <SidebarItem navSize={navSize} icon={FiUsers} title="Manage Users" link="/admin/usersm"/>
+    <SidebarItem navSize={navSize} icon={AiOutlineRead} title="Course" link="/admin/course"/>
+    <SidebarItem navSize={navSize} icon={FiUsers} title="Manage Users" link="/admin/usermanage"/>
     <SidebarItem navSize={navSize} icon={FaLanguage} title="Languages"/>
-    <SidebarItem navSize={navSize} icon={BsCurrencyRupee} title="Payment"/>
+    <SidebarItem navSize={navSize} icon={BsCurrencyRupee} title="Payment" link="/admin/payment"/>
     <SidebarItem navSize={navSize} icon={AiOutlineSetting} title="Settings"/>
     <SidebarItem navSize={navSize} icon={BiSupport} title="Support"/>
     <SidebarItem navSize={navSize} icon={AiOutlineMail} title="Mail"/>

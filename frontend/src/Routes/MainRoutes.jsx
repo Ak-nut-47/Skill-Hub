@@ -16,7 +16,12 @@ import Homepage from "../Pages/Homepage";
 
 import { AdminSignup } from "../Pages/AdminSignup";
 import { AdminSignin } from "../Pages/AdminSignin";
+
+import { CourseManage } from "../Components/AdminComponents/CourseManage";
+import { UserManage } from "../Components/AdminComponents/UserManage";
+import { Payment } from "../Components/AdminComponents/Payment";
 import Payment from "../Pages/Payment";
+
 
 export const MainRoutes = () => {
   const PageRoutes = [
@@ -76,6 +81,18 @@ export const MainRoutes = () => {
       path: "/admin-signin",
       element: <AdminSignin />,
     },
+    {
+      path: "/admin/course",
+      element: <CourseManage />,
+    },
+    {
+      path: "/admin/usermanage",
+      element: <UserManage />,
+    },
+    {
+      path:"/admin/payment",
+      element:<Payment/>
+    }
   ];
 
   return (
