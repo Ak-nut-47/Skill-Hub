@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-export const PaymentCard = ({email,gender,mylearning,name,phone,cart,_id,ind,payment}) => {
+export const AdminPaymentCard = ({email,gender,mylearning,name,phone,cart,_id,ind,payment}) => {
 
     const sum = payment.map(Number).reduce((acc, curr) => acc + curr, 0);
   return (

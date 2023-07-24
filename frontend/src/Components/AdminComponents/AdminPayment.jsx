@@ -4,10 +4,10 @@ import {Sidebar} from "./Sidebar"
 import { Flex ,Box } from '@chakra-ui/react'
 import { AdminNavbar} from './AdminNavbar'
 import LoadingComponent from '../LoadingComponents/LoadingComponent'
-import { PaymentCard } from './PaymentCard'
+import { AdminPaymentCard } from './AdminPaymentCard'
 
 
-export const Payment = () => {
+export const AdminPayment = () => {
 const [users,setUsers]=useState([])
 
 
@@ -57,7 +57,7 @@ console.log(users)
    <p style={{paddingRight:"10px"}}>Delete</p>
     </div>
       {
-        users.length>0 ? users.map((el,ind)=><PaymentCard key={ind} ind={ind} {...el}/>):<div style={{display:"flex",justifyContent:"center",height:"100px",marginTop:"150px"}}>
+        users.length>0 ? users.map((el,ind)=><AdminPaymentCard key={ind} ind={ind} {...el}/>):<div style={{display:"flex",justifyContent:"center",height:"100px",marginTop:"150px"}}>
         <LoadingComponent /></div>
       }
       </Box>

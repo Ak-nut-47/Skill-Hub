@@ -185,10 +185,17 @@ export const Signin = () => {
                 Sign in
               </Button>
             </Stack>
+            <Stack pt={6}>
+              <Text align={"center"}>
+                <NavLink style={{ color: "#a435f0" }} to="/admin-signin">
+                  Login as Admin
+                </NavLink>
+              </Text>
+            </Stack>
 
             <Stack pt={6}>
               <Text align={"center"}>
-                If have no account?{" "}
+                Are you a New User?{" "}
                 <NavLink style={{ color: "#a435f0" }} to="/signup">
                   Sign Up
                 </NavLink>
