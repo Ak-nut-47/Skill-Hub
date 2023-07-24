@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SearchbarCard = ({
   image,
@@ -20,6 +21,7 @@ const SearchbarCard = ({
   duration,
 }) => {
   return (
+    <Link to={`/detail/${_id}`}>
     <Card
       direction={{ base: "column", sm: "row" }}
       overflow="hidden"
@@ -61,6 +63,7 @@ const SearchbarCard = ({
         </CardFooter>
       </Stack>
     </Card>
+    </Link>
   );
 };
 
