@@ -187,6 +187,24 @@ export const Navbar = () => {
           </Box> */}
 
           {token ? (
+            <>
+            <Link href="/mylearning"
+              textDecoration="none"
+              marginRight="10px"
+              padding="10px"
+              _hover={{
+                bgColor: "white",
+                color: "#9904fc",
+                border: "2px solid #9904fc",
+                // textDecoration: "none",
+              }}
+              borderRadius="5px"
+              // fontWeight="bold"
+              color="white"
+              bg="#a435f0"
+              display={{ base: "none", md: "block" }}
+            
+            >My Learning</Link>
             <Button
               marginRight="10px"
               padding="10px"
@@ -205,6 +223,7 @@ export const Navbar = () => {
             >
               Logout
             </Button>
+            </>
           ) : (
             <Box display={"flex"}>
               <Link
