@@ -30,7 +30,7 @@ export const SingleVideoPage = () => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGJiYzBjZWRiN2MxNDUwMDg1ODcxYWYiLCJpYXQiOjE2OTAxMzY5NDUsImV4cCI6MTY5MDIyMzM0NX0.9AcZkHQpa6rvVEKuF7a1iwa2-zx-NMEOTo2fKTgZYmI`,
+          authorization: `Bearer ${localStorage.getItem('frontendtoken')}`
         },
       });
   

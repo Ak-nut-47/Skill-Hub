@@ -30,7 +30,7 @@ const MyLearningPage = () => {
               method: 'DELETE',
               headers: {
                 'Content-Type': 'application/json',
-                authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGJiYzBjZWRiN2MxNDUwMDg1ODcxYWYiLCJpYXQiOjE2OTAxMzY5NDUsImV4cCI6MTY5MDIyMzM0NX0.9AcZkHQpa6rvVEKuF7a1iwa2-zx-NMEOTo2fKTgZYmI',
+                authorization: `Bearer authorization: Bearer ${localStorage.getItem('frontendtoken')}`,
               },
             }).then((res) => {
                 if (!res.ok) {
@@ -72,8 +72,7 @@ const MyLearningPage = () => {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    // authorization: `Bearer ${localStorage.getItem('token')}`
-                    'authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGJiYzBjZWRiN2MxNDUwMDg1ODcxYWYiLCJpYXQiOjE2OTAxMzU1NjUsImV4cCI6MTY5MDIyMTk2NX0.4YeEXVjbdwAKhgeUE0EXIekSG4A1e1-IVZu6_A6iDjE`
+                    authorization: `Bearer ${localStorage.getItem('frontendtoken')}`
                 },
             });
             const data = await res.json();
