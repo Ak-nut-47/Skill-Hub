@@ -3,10 +3,12 @@ import {
   CART_REQUEST,
   DELETE_CART,
   GET_CART_SUCCESS,
+  GET_PAYMENT_SUCCESS,
 } from "./actionTypes";
 
 const initialState = {
   cart: [],
+  payment: [],
   isLoading: false,
   isError: false,
 };
@@ -30,6 +32,12 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         isLoading: false,
         cart: payload,
+      };
+    case GET_PAYMENT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        payment: payload.payment,
       };
     case DELETE_CART:
       return { ...state, isLoading: false };

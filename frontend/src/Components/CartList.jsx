@@ -1,25 +1,41 @@
 import React from "react";
-import { Box, Flex, Image, Text, Button, Input } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Image,
+  Text,
+  Button,
+  Input,
+  useToast,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { deleteCart, getcart } from "../redux/cart/action";
 import { useDispatch } from "react-redux";
-
+import { MdLocalOffer } from "react-icons/md";
 export const CartList = ({
-  id,
+  _id,
   title,
   image,
   author,
   rating,
   total_ratings,
   price,
-  original_price,
   category,
   duration,
 }) => {
   const dispatch = useDispatch();
-
-  const handleDelete = (id) => {
-    dispatch(deleteCart(id)).then((res) => {
+  const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const handleDelete = (_id) => {
+    dispatch(deleteCart(_id)).then((res) => {
       dispatch(getcart);
     });
   };
@@ -85,7 +101,9 @@ export const CartList = ({
             _hover={{
               backgroundColor: "none",
             }}
-            onClick={() => handleDelete(id)}
+            onClick={() => {
+              handleDelete(_id);
+            }}
           >
             <Text
               textAlign={{ base: "center", md: "right" }}
@@ -94,6 +112,23 @@ export const CartList = ({
               Remove
             </Text>
           </Button>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Remove Cart Course?</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <Text>Are you sure you want this remove this course?</Text>
+              </ModalBody>
+
+              <ModalFooter>
+                <Button colorScheme="blue" mr={3} onClick={onClose}>
+                  Cancel
+                </Button>
+                <Button variant="ghost">Yes</Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
           <Box display={{ base: "flex", md: "block" }}>
             <Button
               bg="none"
@@ -109,7 +144,7 @@ export const CartList = ({
             >
               Move to Wishlist
             </Button>
-            <Flex flexDirection={{ base: "row", md: "column" }}>
+            <Flex flexDirection={{ base: "row", md: "row" }}>
               <Text
                 textAlign={{ base: "center", md: "center" }}
                 width={{ base: "100%", md: "100px" }}
@@ -120,18 +155,10 @@ export const CartList = ({
               >
                 ₹{price}
               </Text>
-              <Text
-                display={{ md: "none" }}
-                textAlign={{ base: "center", md: "center" }}
-                pt={{ base: "10px", md: "30px" }}
-                fontSize={{ base: "16px", md: "18px" }}
-                fontWeight={"normal"}
-                fontStyle="normal"
-                as="s"
-                color="#78909C"
-              >
-                ₹{original_price}
-              </Text>
+
+              <Box mt={"35px"} as="span" title="KEEPLEARNING">
+                <MdLocalOffer color={"#9575CD"} size={"20px"} />
+              </Box>
             </Flex>
           </Box>
         </Box>
