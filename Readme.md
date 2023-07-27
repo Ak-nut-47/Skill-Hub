@@ -11,11 +11,43 @@ Welcome to Skill Hub, your ultimate destination for diverse and comprehensive on
 
 ## Links
 - [GitHub Repository](https://github.com/Ak-nut-47/greasy-sofa-2441)
-- [Live Demo](https://.netlify.app/)
-  ## Screenshot
-  ![Screenshot (287)](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/119477973/80fdfb47-80fd-4023-81b9-478812038cc2)
-  ![Screenshot (288)](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/119477973/576fb7f0-7b67-4afe-9ca5-27f17b2f388d)
+- [Live Demo](https://nemskillhub.netlify.app/)
+- 
+  ## Landing Page
+  ![LandingPage](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/ec289483-8909-47a9-9f44-3b7e5bbe1d42)
 
+  ## Navbar
+ ![Navbar](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/36450988-443e-4a97-801d-2c71eb381fd9)
+
+ ## Login Page
+ ![Login](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/298639fd-cb36-4f18-b929-a2ed811b6e1b)
+
+ ## Signup Page
+ ![Signup](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/dc42ddcc-3d13-4f0b-b8f2-e2ff6fb518b6)
+
+ ## Home Page
+ ![Homepage](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/69eed546-cd33-4996-a7d0-67128a35f8b7)
+
+ ## Search Bar
+ ![SearchBar](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/30f0741b-9113-4405-ba96-17f255e1ad65)
+
+ ## Footer
+ ![Footer](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/b4ab15ca-9b31-40f0-9e2d-16c3d7fe9e2c)
+
+ ## Single Course Details
+ ![SingleCourseDetails](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/02bce835-b216-4a05-b572-80759e52cd5c)
+
+ ## Shopping Cart
+ ![ShoppingCart](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/3f6625d2-8a77-4ed7-a782-0cf69747ebdf)
+
+ ## Checkout Page 
+ ![Checkout](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/5d4eef2d-967b-49e0-896f-a21ebac9478e)
+
+## Non Existent Route Handler Page
+![pagenotfound](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/bda37195-c8c3-41d8-b7dc-60310fff9b27)
+
+## Loading Animation 
+![Screenshot 2023-07-28 002249](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/7748e0fe-2535-44ec-9273-1f9a7cbe6431)
 
 
 ## Built With
@@ -45,4 +77,15 @@ Welcome to Skill Hub, your ultimate destination for diverse and comprehensive on
 
 ## Features
 
-- Browse Courses in Homepage and LandingPage# Skill Hub
+- Browse Courses in Homepage and LandingPage
+- View Course Details in Single Page View
+- Can Signup
+- Can Login
+- Can subscribe to Courses
+- Subscribing to course Gives access to Course Videos
+- Course Videos Can be Played
+- All videos Displayed in a Youtube recommendation kind of List
+- Cannot access video if user has not subscribed to
+- Admin Page
+- Admin can add, modify , delete courses
+  
