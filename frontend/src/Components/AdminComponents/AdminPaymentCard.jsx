@@ -5,7 +5,7 @@ export const AdminPaymentCard = ({email,gender,mylearning,name,phone,cart,_id,in
 
     const sum = payment.map(Number).reduce((acc, curr) => acc + curr, 0);
   return (
-    <div style={{display:"flex",justifyContent:"space-between",padding:"30px 0px 30px 0px"}}>
+    <div style={{display:"flex",justifyContent:"space-between",textAlign:"center",padding:"30px 0px 30px 0px"}}>
    <p style={{paddingLeft:"30px"}}>{ind+1}</p> 
    <select style={{width:"50px",marginRight:"0px"}}>
     <option value={_id}>{_id}</option>
@@ -27,3 +27,5 @@ export const AdminPaymentCard = ({email,gender,mylearning,name,phone,cart,_id,in
     </div>
   )
 }
+
+
