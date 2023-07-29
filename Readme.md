@@ -34,10 +34,6 @@ Welcome to Skill Hub, your ultimate destination for diverse and comprehensive on
  ![Homepage](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/69eed546-cd33-4996-a7d0-67128a35f8b7)
 ***
 ***
- ## Search Bar
- ![SearchBar](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/30f0741b-9113-4405-ba96-17f255e1ad65)
-***
-***
  ## Footer
  ![Footer](https://github.com/Ak-nut-47/greasy-sofa-2441/assets/104593018/b4ab15ca-9b31-40f0-9e2d-16c3d7fe9e2c)
 ***
