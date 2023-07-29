@@ -83,7 +83,7 @@ export const AdminNavbar = ({title}) => {
       bg="white" //white
       // boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
       position="fixed"
-      width="86%"
+      width="83%"
       zIndex={5}
       ml={"210px"}
     >

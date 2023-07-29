@@ -10,6 +10,7 @@ import {
   Grid,
   Container,
   Box,
+  Input,
 } from "@chakra-ui/react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Card from "../LandingPageComponents/Card";
@@ -25,6 +26,13 @@ const Sidebar = () => {
     AWS: false,
     "Data Science": false,
   });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+// --------------------------------------------------------------------sidebarsearch state
+
+
   const [allCourses, setAllCourses] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortBy, setSortBy] = useState("");
@@ -194,6 +202,39 @@ const Sidebar = () => {
     setSortOrder(event.target.value);
   };
 
+  // --------------------------------------------------------------------------Search Sidebar
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchQuery.trim() !== "") {
+        fetchResults();
+      } else {
+        setSearchResults([]);
+      }
+    }, 800);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery]);
+
+  const fetchResults = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(
+        `https://anxious-bull-glasses.cyclic.app/course?search=${searchQuery}`
+      );
+      const data = await response.json();
+      console.log(data.course)
+      setCourse(data.course);
+      setIsLoading(false);
+      setShowResults(true); 
+      
+      
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      setIsLoading(false);
+    }
+  }
+
   return (
     <Flex>
       <Flex
@@ -216,6 +257,14 @@ const Sidebar = () => {
         backgroundColor={colorMode === "light" ? "white" : "#1A202C"}
         color={colorMode === "light" ? "black" : "white"}
       >
+        <Heading
+          as="h2"
+          size={{ base: "sm", sm: "md", md: "l", lg: "l", xl: "xl" }}
+          marginBottom="20px"
+        >
+          Search
+        </Heading>
+        <Input value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} placeholder="Seach..."/>
         <Heading
           as="h2"
           size={{ base: "sm", sm: "md", md: "l", lg: "l", xl: "xl" }}

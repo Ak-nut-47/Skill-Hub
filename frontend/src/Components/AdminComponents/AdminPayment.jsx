@@ -45,7 +45,7 @@ console.log(users)
       <Flex  w="100%">
 
           <Box mt={"100px"}>
-      <div style={{display:"flex",fontWeight:"bold", justifyContent:"space-around",width:"85vw",border:"2px solid #9a03fe",padding:"30px 0px 30px 0px",borderRadius:'10px'}}>
+      <div style={{display:"flex",fontWeight:"bold", justifyContent:"space-evenly",width:"85vw",border:"2px solid #9a03fe",padding:"30px 0px 30px 0px",borderRadius:'10px'}}>
    <p>Sr.No</p> 
    <p style={{marginLeft:"-30px"}}>UserID</p>
    <p>Name</p>
